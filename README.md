@@ -96,7 +96,7 @@ You can deploy this project for free using **GitHub Pages**:
 ## 👨‍💻 Author
 
 Developed by **Allan**
-📍 Carapicuíba - SP, Brazil
+📍 Cotia - SP, Brazil
 
 ---
 
