@@ -1,0 +1,78 @@
+/* =========================================
+   Estilos do Rodapé (Estilo Mega Footer)
+   ========================================= */
+footer {
+    background-color: #f9f9f9;
+    /* Um cinza muito clarinho para separar do fundo principal */
+    border-top: 1px solid #e0e0e0;
+    padding: 60px 50px 20px 50px;
+    font-size: 14px;
+}
+
+/* Container do Grid de Colunas */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Responsivo automático */
+    gap: 40px;
+    max-width: 1200px;
+    /* Mantém tudo alinhado no centro em telas gigantes */
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+/* Títulos das Colunas */
+.footer-column h4 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #121212;
+    margin-bottom: 20px;
+}
+
+/* Listas de Links */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #000000;
+}
+
+/* Barra inferior (Copyright e Termos) */
+.footer-bottom {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-legal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 12px;
+    color: #888888;
+}
+
+.legal-links a {
+    color: #888888;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.legal-links a:hover {
+    color: #121212;
+}

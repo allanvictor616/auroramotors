@@ -1,0 +1,159 @@
+/* 1. O Container Principal */
+.hero-home {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    /* Ocupa 60% da altura da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow: hidden; */
+    /* Corta qualquer sobra do vídeo */
+}
+
+/* 2. O Vídeo de Fundo (Camada 1) */
+.hero-video {
+    position: absolute;
+    /* Tira o vídeo do fluxo normal, deixando ele flutuar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Força o vídeo a preencher todo o espaço sem achatar */
+    z-index: 1;
+    /* Camada mais funda */
+}
+
+/* 3. A Película (Camada 2) - Escurece um pouco para o texto aparecer bem */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    /* Película levemente escura */
+    z-index: 2;
+    /* Fica acima do vídeo */
+}
+
+/* 4. O Card Branco (Camada 3) - Efeito Vidro Transparente */
+.welcome-card {
+    position: relative;
+    z-index: 3;
+
+    /* O SEGREDO 1: Fundo branco com apenas 25% de opacidade (0.25) */
+    background: rgba(255, 255, 255, 0);
+
+    /* O SEGREDO 2: O desfoque aplicado ao que está atrás do card */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    /* Suporte para aparelhos da Apple */
+
+    /* Uma bordinha branca bem fina para dar o "corte" do vidro */
+    border: 3.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-card h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.welcome-card p {
+    font-size: 18px;
+    color: #d3d3d3;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* =========================================
+   Seção 2: Banners de Destaque (Estilo BMW)
+   ========================================= */
+
+.destaques-carros {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Espaço em branco entre um banner e outro */
+    margin-top: 15px;
+    /* Espaço para afastar do vídeo inicial */
+    margin-bottom: 50px;
+}
+
+.car-banner {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* Altura imponente para cada carro */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    /* Centraliza o texto verticalmente */
+}
+
+/* O SEGREDO: O gradiente que escurece a esquerda e some na direita */
+.banner-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    /* Ocupa pouco mais da metade da tela */
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.904) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+/* Caixa de texto sobre o carro */
+.car-info {
+    position: relative;
+    z-index: 2;
+    /* Fica por cima do gradiente e da foto */
+    color: #ffffff;
+    padding-left: 10%;
+    /* Empurra o texto para não colar na borda esquerda da tela */
+    max-width: 50%;
+    /* Evita que o texto invada a foto do carro na direita */
+}
+
+.car-info h3 {
+    font-size: 42px;
+    font-weight: 300;
+    /* Letra mais fina, dá muita elegância (estilo luxo) */
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.car-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+}
+
+/* Botão "Saiba Mais" transparente com borda (Ghost Button) */
+.btn-outline {
+    display: inline-block;
+    padding: 12px 40px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse no botão: inverte as cores */
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
