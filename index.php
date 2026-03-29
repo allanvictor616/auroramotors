@@ -1,6 +1,6 @@
 <?php 
-// Puxa o cabeçalho e o menu [cite: 41]
-include 'includes/header.php'; 
+// Puxa o cabeçalho e o menu
+include 'includes/header.php';
 ?>
 
     <main>
@@ -42,6 +42,6 @@ include 'includes/header.php';
     </main>
 
 <?php 
-// Puxa o rodapé [cite: 43]
-include 'includes/footer.php'; 
+// Puxa o rodapé
+include 'includes/footer.php';
 ?>

@@ -7,28 +7,23 @@
     box-sizing: border-box;
 }
 
-/* Fundo Off-White e texto escuro, preparado para o Rodapé Fixo */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f5f7;
     color: #333333;
     display: flex;
-    /* Transforma a página num layout flexível */
     flex-direction: column;
-    /* Coloca os itens um embaixo do outro */
     min-height: 100vh;
-    /* Força a página a ter no MÍNIMO 100% da altura da tela */
 }
 
 main {
     flex: 1;
-    /* O SEGREDO: Faz a área principal crescer e empurrar o rodapé para o final */
 }
 
 /* =========================================
    Cabeçalho Principal (Header)
    ========================================= */
-header {
+.aurora-header {
     background-color: #ffffff;
     border-bottom: 1px solid #e0e0e0;
     padding: 15px 50px;
@@ -36,27 +31,44 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: relative; /* CRUCIAL: Mantém o Mega Menu colado aqui */
+    z-index: 1000;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #121212;
+/* Ajuste do container da logo */
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilização da imagem do logo */
+.main-logo {
+    height: 40px; /* Define uma altura elegante para o menu */
+    width: auto;  /* Mantém a proporção correta */
+    transition: transform 0.3s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.05); /* Um leve zoom ao passar o mouse, toque premium */
 }
 
 /* =========================================
    Navegação Padrão
    ========================================= */
-nav ul {
+.main-nav ul {
     list-style: none;
     display: flex;
     gap: 30px;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li a {
+.main-nav ul li {
+    padding: 10px 0;
+}
+
+.main-nav ul li a {
     color: #555555;
     text-decoration: none;
     font-size: 14px;
@@ -64,6 +76,70 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.main-nav ul li a:hover {
     color: #000000;
+}
+
+/* =========================================
+   MEGA MENU (Estilo Premium)
+   ========================================= */
+.main-nav ul li.has-megamenu {
+    position: static; 
+}
+
+.megamenu {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-top: 1px solid #eee;
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.main-nav ul li.has-megamenu:hover .megamenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.megamenu-content {
+    display: flex;
+    gap: 80px;
+    padding: 40px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.megamenu-column h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #121212;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.megamenu-column ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.megamenu-column ul li {
+    padding: 0;
+}
+
+.megamenu-column ul li a {
+    font-weight: 400;
+    color: #666;
+}
+
+.megamenu-column ul li a:hover {
+    color: #c9933b;
 }
