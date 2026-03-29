@@ -28,9 +28,9 @@
             <div class="footer-column">
                 <h4>Modelos</h4>
                 <ul>
-                    <li><a href="#">Vanguard (Sedan)</a></li>
-                    <li><a href="#">Zenith (SUV)</a></li>
-                    <li><a href="#">Nexus (Hatch)</a></li>
+                    <li><a href="#">Sedan</a></li>
+                    <li><a href="#">SUV</a></li>
+                    <li><a href="#">Hatch</a></li>
                     <li><a href="#">Conceitos Premium</a></li>
                 </ul>
             </div>
@@ -49,9 +49,9 @@
             <div class="footer-legal">
                 <p>&copy; <?php echo date("Y"); ?> Aurora Motors. Todos os direitos reservados.</p>
                 <div class="legal-links">
-                    <a href="#">Política de Cookies</a>
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Informações Legais</a>
+                    <a href="politica-de-cookies.php">Política de Cookies</a>
+                    <a href="politicas-de-privacidade.php">Política de Privacidade</a>
+                    <a href="informacoes-legais.php">Informações Legais</a>
                 </div>
             </div>
         </div>

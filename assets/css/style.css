@@ -157,3 +157,183 @@
     background-color: #ffffff;
     color: #000000;
 }
+
+/* =========================================
+   Páginas Legais e Textos Longos
+   ========================================= */
+.legal-content {
+    max-width: 800px; /* Limita a largura para a leitura não cansar a vista */
+    margin: 60px auto; /* Centraliza na tela com espaço em cima e embaixo */
+    padding: 0 20px;
+    color: #444;
+}
+
+.legal-content h1 {
+    font-size: 32px;
+    color: #121212;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.legal-content h3 {
+    font-size: 20px;
+    color: #121212;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.legal-content p {
+    font-size: 16px;
+    line-height: 1.8; /* Espaçamento generoso entre as linhas */
+    margin-bottom: 20px;
+}
+
+.legal-content ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   Página de Modelos (Catálogo e Filtros)
+   ========================================= */
+.modelos-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.modelos-header {
+    margin-bottom: 50px;
+}
+
+.modelos-header h1 {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #121212;
+}
+
+.modelos-header p {
+    color: #666;
+    font-size: 16px;
+    max-width: 800px;
+}
+
+.modelos-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* --- Menu Lateral de Filtros --- */
+.filtros-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.filtros-sidebar h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.filtros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-filtro {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.btn-filtro:hover, .btn-filtro.ativo {
+    border-color: #121212;
+    background: #f9f9f9;
+    font-weight: 600;
+}
+
+.btn-limpar {
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    color: #555;
+    cursor: pointer;
+    text-align: left;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.btn-limpar:hover {
+    color: #121212;
+}
+
+/* --- Vitrine de Carros (Direita) --- */
+.carros-vitrine {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.car-card {
+    background: #fff;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}
+
+.car-badge {
+    background: #eee;
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #666;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+.car-card h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 15px 0;
+}
+
+.car-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.car-price {
+    font-size: 14px;
+    color: #0066b2; /* Azul estilo link/destaque */
+}
+
+.car-price strong {
+    color: #121212;
+    font-size: 18px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Classe oculta que o JavaScript vai usar */
+.escondido {
+    display: none !important;
+}
