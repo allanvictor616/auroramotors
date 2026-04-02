@@ -77,3 +77,88 @@ function renderCart() {
         container.innerHTML += itemHtml;
     });
 }
+
+// Lógica para envio da proposta profissional
+document.addEventListener('submit', function(e) {
+    if (e.target && e.target.id === 'propostaForm') {
+        e.preventDefault(); // Impede o envio real (que recarregaria a página)
+
+        const formContent = document.getElementById('formContent');
+        const successMessage = document.getElementById('successMessage');
+
+        // Esconde o formulário e mostra o sucesso com uma transição suave
+        formContent.classList.add('d-none');
+        successMessage.classList.remove('d-none');
+
+        // Limpa o carrinho local após a proposta ser "enviada"
+        localStorage.removeItem('aurora_cart');
+        
+        // Atualiza a contagem no header e a lista na página
+        if (typeof updateCartCount === "function") updateCartCount();
+        if (typeof renderCart === "function") renderCart();
+    }
+});
+
+window.addToCart = function(nome, versao, preco, imagemUrl) {
+    const cart = getCart();
+    const novoCarro = { nome, versao, preco, imagemUrl };
+    
+    cart.push(novoCarro);
+    localStorage.setItem('aurora_cart', JSON.stringify(cart));
+    
+    updateCartCount();
+
+
+    const toast = document.getElementById('cartToast');
+    const toastMsg = document.getElementById('toastMessage');
+    
+    if (toast) {
+        toastMsg.innerText = nome + ' ADICIONADO À LISTA';
+        toast.classList.remove('d-none');
+        
+        // Esconde automaticamente após 3 segundos
+        setTimeout(() => {
+            toast.classList.add('d-none');
+        }, 3000);
+    }
+}
+
+// ==========================================
+// LÓGICA PARA ESVAZIAR O CARRINHO
+// ==========================================
+document.addEventListener('click', function(e) {
+    // Usamos o 'closest' para garantir que funcione mesmo se o usuário clicar exatamente em cima do ícone da lixeira
+    const btnLimpar = e.target.closest('#btnLimparCarrinho');
+    
+    if (btnLimpar) {
+        // Confirmação de segurança (UX)
+        if (confirm("Tem certeza que deseja remover todos os veículos da sua lista?")) {
+            
+            // 1. Remove os dados salvos no navegador
+            localStorage.removeItem('aurora_cart');
+            
+            // 2. Atualiza a bolinha vermelha no header (se a função existir)
+            if (typeof updateCartCount === "function") {
+                updateCartCount();
+            }
+            
+            // 3. Recarrega a lista na tela para mostrar que está vazio
+            if (typeof renderCart === "function") {
+                renderCart();
+            }
+            
+            // 4. Dispara a notificação visual (Toast)
+            const toast = document.getElementById('cartToast');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            if (toast && toastMsg) {
+                toastMsg.innerText = 'CARRINHO ESVAZIADO';
+                toast.classList.remove('d-none');
+                
+                setTimeout(() => {
+                    toast.classList.add('d-none');
+                }, 3000);
+            }
+        }
+    }
+});

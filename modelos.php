@@ -47,7 +47,7 @@ include 'includes/header.php';
                     <span class="car-badge">Hatch</span>
                     <h2>Aurora Nexus N-Line</h2>
                     <img src="assets/img/Nexus N-Line.png" alt="Aurora Nexus">
-                    <p class="car-price">Combustão<br><strong>A partir de R$ 320.950</strong></p>
+                    <p class="car-price">Combustão<br><strong>A partir de R$ 380.950</strong></p>
                     <button class="btn btn-dark w-100 premium-btn mt-3" onclick="addToCart('Aurora Nexus N-Line', 'Combustão', 'A partir de R$ 320.950', 'assets/img/Nexus N-Line.png')">
                         Adicionar ao Carrinho
                     </button>

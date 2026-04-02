@@ -67,26 +67,39 @@
     font-size: 22px;
 }
 
+/* Estilo dos campos (Inputs) Premium */
 .premium-input {
-    background-color: transparent !important;
+    background-color: #222 !important; /* Fundo cinza escuro para contraste */
     border: none !important;
-    border-bottom: 1px solid #444 !important;
-    color: #fff !important;
+    border-bottom: 1px solid #444 !important; /* Linha sutil na base */
+    color: #c9933b !important; /* O texto que o usuário digita fica DOURADO */
     border-radius: 0;
-    padding-left: 0;
+    padding: 12px 10px;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
-.premium-input:focus {
-    border-bottom: 1px solid #c9933b !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
+/* Estilo do Placeholder (o texto seu@email.com e ******) */
+.premium-input::placeholder {
+    color: #888 !important; /* Texto de exemplo em cinza para não confundir */
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
+/* Quando o usuário clica para digitar */
+.premium-input:focus {
+    background-color: #2a2a2a !important; /* Fundo levemente mais claro */
+    border-bottom: 1px solid #c9933b !important; /* Linha de base acende em dourado */
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Ajuste para ícone de "olhinho" da senha e preenchimento automático */
 .premium-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #0f0f0f inset !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 30px #222 inset !important;
+    -webkit-text-fill-color: #c9933b !important;
 }
 
 .modal-body .form-label {
@@ -187,4 +200,25 @@
 /* Deixa os links acesos quando passar o mouse */
 #btnGoRegister:hover, #btnGoLogin:hover {
     opacity: 1 !important;
+}
+
+.cart-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #121212;
+    color: #c9933b; /* Dourado Aurora */
+    padding: 15px 25px;
+    border-left: 4px solid #c9933b;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }

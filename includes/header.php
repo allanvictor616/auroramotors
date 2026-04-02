@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="assets/css/cart.css">
 </head>
 <body>
+    <div id="cartToast" class="cart-toast d-none">
+        <i class="bi bi-check-lg me-2"></i>
+        <span id="toastMessage">Item adicionado com sucesso!</span>
+    </div>
 
     <header class="aurora-header">
     <div class="logo">
