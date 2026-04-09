@@ -9,30 +9,23 @@
     gap: 15px;
 }
 
-.btn-login {
-    border-radius: 0;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-}
-
 .cart-icon-link {
     position: relative;
     font-size: 24px;
-    color: #fff;
+    color: #333; /* Atualizado para combinar com o novo header claro */
     text-decoration: none;
     display: inline-block;
 }
 
 .cart-icon-link:hover {
-    color: #ccc;
+    color: #c9933b;
 }
 
 .cart-counter {
     position: absolute;
     top: -5px;
     right: -10px;
-    background-color: #c9933b; /* Dourado Premium Aurora */
+    background-color: #c9933b;
     color: #fff;
     font-size: 11px;
     font-weight: bold;
@@ -44,15 +37,17 @@
     justify-content: center;
 }
 
-/* Modal Premium Escuro */
+/* =========================================
+   MODAL PREMIUM CLARO (Off-white)
+   ========================================= */
 .premium-modal {
-    background-color: rgba(15, 15, 15, 0.95) !important;
+    background-color: rgba(250, 250, 250, 0.98) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #121212 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 0;
-    padding: 30px 0px;
+    padding: 30px 0;
 }
 
 .premium-modal .modal-header {
@@ -67,39 +62,39 @@
     font-size: 22px;
 }
 
-/* Estilo dos campos (Inputs) Premium */
+/* Campos de Digitação no Modo Claro (Limpo) */
 .premium-input {
-    background-color: #222 !important; /* Fundo cinza escuro para contraste */
+    background-color: #d9d9d9 !important;
     border: none !important;
-    border-bottom: 1px solid #444 !important; /* Linha sutil na base */
-    color: #c9933b !important; /* O texto que o usuário digita fica DOURADO */
+    border-bottom: 1px solid #ccc !important;
+    color: #121212 !important;
     border-radius: 0;
     padding: 12px 10px;
     font-size: 16px;
     transition: all 0.3s ease;
+    box-shadow: none !important; /* Remove o fundo preto residual */
 }
 
-/* Estilo do Placeholder (o texto seu@email.com e ******) */
+/* O texto de dica (seu@email.com) */
 .premium-input::placeholder {
-    color: #888 !important; /* Texto de exemplo em cinza para não confundir */
-    font-weight: 300;
+    color: #555 !important;
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 1px;
 }
 
-/* Quando o usuário clica para digitar */
 .premium-input:focus {
-    background-color: #2a2a2a !important; /* Fundo levemente mais claro */
-    border-bottom: 1px solid #c9933b !important; /* Linha de base acende em dourado */
+    background-color: transparent !important;
+    border-bottom: 1px solid #c9933b !important;
     box-shadow: none !important;
     outline: none !important;
 }
 
-/* Ajuste para ícone de "olhinho" da senha e preenchimento automático */
+/* Arruma o fundo branco automático do navegador */
 .premium-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #222 inset !important;
-    -webkit-text-fill-color: #c9933b !important;
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    -webkit-text-fill-color: #121212 !important;
 }
 
 .modal-body .form-label {
@@ -123,7 +118,9 @@
     background-color: #a87b32 !important;
 }
 
-/* Layout dos itens no Carrinho */
+/* =========================================
+   Layout dos itens no Carrinho
+   ========================================= */
 .cart-summary {
     background-color: #f9f9f9;
     border: 1px solid #eee;
@@ -177,37 +174,34 @@
 /* =========================================
    ANIMAÇÃO DO MODAL DE LOGIN/CADASTRO
    ========================================= */
-
-/* A Folha de Papel Gigante: 200% de largura (100% pro Login + 100% pro Cadastro) */
-
 .form-slider-wrapper {
     display: flex;
     width: 200%;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animação super suave */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Cada formulário ocupa exatamente a metade da folha gigante (50% de 200% = 100% da tela) */
 .form-section {
     width: 50%;
-    padding: 0 30px; /* Um respiro para não grudar nas bordas */
+    padding: 0 30px;
 }
 
-/* A CLASSE MÁGICA: Quando ela for adicionada pelo JS, a folha inteira anda para a esquerda */
 .slide-active {
-    transform: translateX(-50%)
+    transform: translateX(-50%);
 }
 
-/* Deixa os links acesos quando passar o mouse */
 #btnGoRegister:hover, #btnGoLogin:hover {
     opacity: 1 !important;
 }
 
+/* =========================================
+   Toast de Notificação do Carrinho
+   ========================================= */
 .cart-toast {
     position: fixed;
     top: 20px;
     right: 20px;
     background-color: #121212;
-    color: #c9933b; /* Dourado Aurora */
+    color: #c9933b;
     padding: 15px 25px;
     border-left: 4px solid #c9933b;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);

@@ -3,29 +3,23 @@
     position: relative;
     width: 100%;
     height: 60vh;
-    /* Ocupa 60% da altura da tela */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* overflow: hidden; */
-    /* Corta qualquer sobra do vídeo */
 }
 
 /* 2. O Vídeo de Fundo (Camada 1) */
 .hero-video {
     position: absolute;
-    /* Tira o vídeo do fluxo normal, deixando ele flutuar */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Força o vídeo a preencher todo o espaço sem achatar */
     z-index: 1;
-    /* Camada mais funda */
 }
 
-/* 3. A Película (Camada 2) - Escurece um pouco para o texto aparecer bem */
+/* 3. A Película (Camada 2) */
 .video-overlay {
     position: absolute;
     top: 0;
@@ -33,25 +27,16 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    /* Película levemente escura */
     z-index: 2;
-    /* Fica acima do vídeo */
 }
 
-/* 4. O Card Branco (Camada 3) - Efeito Vidro Transparente */
+/* 4. O Card Branco (Camada 3) */
 .welcome-card {
     position: relative;
     z-index: 3;
-
-    /* O SEGREDO 1: Fundo branco com apenas 25% de opacidade (0.25) */
     background: rgba(255, 255, 255, 0);
-
-    /* O SEGREDO 2: O desfoque aplicado ao que está atrás do card */
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    /* Suporte para aparelhos da Apple */
-
-    /* Uma bordinha branca bem fina para dar o "corte" do vidro */
     border: 3.5px solid rgba(255, 255, 255, 0.4);
     border-radius: 8px;
     padding: 40px;
@@ -75,17 +60,14 @@
 }
 
 /* =========================================
-   Seção 2: Banners de Destaque (Estilo BMW)
+   Seção 2: Banners de Destaque
    ========================================= */
-
 .destaques-carros {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* Espaço em branco entre um banner e outro */
     margin-top: 15px;
-    /* Espaço para afastar do vídeo inicial */
     margin-bottom: 50px;
 }
 
@@ -93,42 +75,33 @@
     position: relative;
     width: 100%;
     height: 70vh;
-    /* Altura imponente para cada carro */
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    /* Centraliza o texto verticalmente */
 }
 
-/* O SEGREDO: O gradiente que escurece a esquerda e some na direita */
 .banner-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 55%;
-    /* Ocupa pouco mais da metade da tela */
     height: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.904) 0%, rgba(0, 0, 0, 0) 100%);
     z-index: 1;
 }
 
-/* Caixa de texto sobre o carro */
 .car-info {
     position: relative;
     z-index: 2;
-    /* Fica por cima do gradiente e da foto */
     color: #ffffff;
     padding-left: 10%;
-    /* Empurra o texto para não colar na borda esquerda da tela */
     max-width: 50%;
-    /* Evita que o texto invada a foto do carro na direita */
 }
 
 .car-info h3 {
     font-size: 42px;
     font-weight: 300;
-    /* Letra mais fina, dá muita elegância (estilo luxo) */
     margin-bottom: 15px;
     letter-spacing: 1px;
 }
@@ -140,7 +113,6 @@
     color: #e0e0e0;
 }
 
-/* Botão "Saiba Mais" transparente com borda (Ghost Button) */
 .btn-outline {
     display: inline-block;
     padding: 12px 40px;
@@ -152,7 +124,6 @@
     transition: all 0.3s ease;
 }
 
-/* Efeito ao passar o mouse no botão: inverte as cores */
 .btn-outline:hover {
     background-color: #ffffff;
     color: #000000;
@@ -162,8 +133,8 @@
    Páginas Legais e Textos Longos
    ========================================= */
 .legal-content {
-    max-width: 800px; /* Limita a largura para a leitura não cansar a vista */
-    margin: 60px auto; /* Centraliza na tela com espaço em cima e embaixo */
+    max-width: 800px;
+    margin: 60px auto;
     padding: 0 20px;
     color: #444;
 }
@@ -185,7 +156,7 @@
 
 .legal-content p {
     font-size: 16px;
-    line-height: 1.8; /* Espaçamento generoso entre as linhas */
+    line-height: 1.8;
     margin-bottom: 20px;
 }
 
@@ -227,7 +198,6 @@
     align-items: flex-start;
 }
 
-/* --- Menu Lateral de Filtros --- */
 .filtros-sidebar {
     width: 250px;
     flex-shrink: 0;
@@ -281,7 +251,6 @@
     color: #121212;
 }
 
-/* --- Vitrine de Carros (Direita) --- */
 .carros-vitrine {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -289,14 +258,23 @@
     width: 100%;
 }
 
+/* =========================================
+   Vitrine de Carros (Cards Padronizados)
+   ========================================= */
+
 .car-card {
     background: #fff;
     padding: 20px;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    border: 1px solid #eee; 
 }
 
 .car-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
 }
 
 .car-badge {
@@ -306,6 +284,7 @@
     color: #666;
     border-radius: 2px;
     text-transform: uppercase;
+    align-self: flex-start; /* Evita que o badge estique no flexbox */
 }
 
 .car-card h2 {
@@ -314,16 +293,19 @@
     margin: 15px 0;
 }
 
+/* MÁGICA DO BANCO DE DADOS: Padroniza o tamanho de todas as fotos */
+
 .car-card img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
     margin-bottom: 15px;
 }
 
 .car-price {
     font-size: 14px;
-    color: #0066b2; /* Azul estilo link/destaque */
+    color: #0066b2;
 }
 
 .car-price strong {
@@ -333,7 +315,10 @@
     margin-top: 5px;
 }
 
-/* Classe oculta que o JavaScript vai usar */
+.car-card .btn {
+    margin-top: auto !important; 
+}
+
 .escondido {
     display: none !important;
 }

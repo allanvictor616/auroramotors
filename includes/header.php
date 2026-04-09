@@ -83,8 +83,8 @@
             </ul>
         </nav>
 
-        <div class="header-actions">
-            <button type="button" class="btn btn-outline-dark btn-login" data-bs-toggle="modal" data-bs-target="#loginModal">
+<div class="header-actions">
+            <button type="button" class="btn btn-login-header" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Login
             </button>
             <a href="carrinho.php" class="cart-icon-link" style="color: #333; text-decoration: none;">
@@ -98,56 +98,56 @@
             <div class="modal-content premium-modal">
                 
                 <div class="modal-header border-0 pb-0">
-                    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"></button>
                 </div>
                 
                 <div class="modal-body overflow-hidden pt-0">
-                    
                     <div class="form-slider-wrapper" id="formSlider">
                         
                         <div class="form-section">
-                            <h5 class="text-center text-light mb-4" style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase;">Login Aurora</h5>
+                            <h5 class="text-center mb-4" style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: #121212;">Login Aurora</h5>
                             <form id="formLogin">
                                 <div class="mb-3">
-                                    <label class="form-label text-light">E-mail</label>
+                                    <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">E-mail</label>
                                     <input type="email" class="form-control premium-input" placeholder="seu@email.com">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label text-light">Senha</label>
+                                    <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Senha</label>
                                     <input type="password" class="form-control premium-input" placeholder="••••••••">
                                 </div>
                                 <button type="button" class="btn btn-primary w-100 premium-btn mb-3" data-bs-dismiss="modal">Entrar</button>
                                 
                                 <div class="text-center">
-                                    <a href="#" id="btnGoRegister" class="text-light text-decoration-none" style="font-size: 14px; opacity: 0.7; transition: 0.3s;">Não possui conta? <strong style="color: #c9933b;">Criar agora</strong></a>
+                                    <a href="#" id="btnGoRegister" class="text-decoration-none" style="font-size: 14px; color: #555; transition: 0.3s;">Não possui conta? <strong style="color: #c9933b;">Criar agora</strong></a>
                                 </div>
                             </form>
                         </div>
 
                         <div class="form-section">
-                            <h5 class="text-center text-light mb-4" style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase;">Criar Conta</h5>
+                            <h5 class="text-center mb-4" style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: #121212;">Criar Conta</h5>
                             <form id="formRegister">
                                 <div class="mb-3">
-                                    <label class="form-label text-light">Nome Completo</label>
+                                    <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Nome Completo</label>
                                     <input type="text" class="form-control premium-input" placeholder="João da Silva">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label text-light">E-mail</label>
+                                    <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">E-mail</label>
                                     <input type="email" class="form-control premium-input" placeholder="seu@email.com">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label text-light">Criar Senha</label>
+                                    <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Criar Senha</label>
                                     <input type="password" class="form-control premium-input" placeholder="••••••••">
                                 </div>
                                 <button type="button" class="btn btn-primary w-100 premium-btn mb-3" data-bs-dismiss="modal">Finalizar Cadastro</button>
                                 
                                 <div class="text-center">
-                                    <a href="#" id="btnGoLogin" class="text-light text-decoration-none" style="font-size: 14px; opacity: 0.7; transition: 0.3s;"><i class="bi bi-arrow-left"></i> Voltar para Login</a>
+                                    <a href="#" id="btnGoLogin" class="text-decoration-none" style="font-size: 14px; color: #555; transition: 0.3s;"><i class="bi bi-arrow-left"></i> Voltar para Login</a>
                                 </div>
                             </form>
                         </div>
 
-                    </div> </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
