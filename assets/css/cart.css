@@ -12,7 +12,7 @@
 .cart-icon-link {
     position: relative;
     font-size: 24px;
-    color: #333; /* Atualizado para combinar com o novo header claro */
+    color: #333;
     text-decoration: none;
     display: inline-block;
 }
@@ -72,10 +72,9 @@
     padding: 12px 10px;
     font-size: 16px;
     transition: all 0.3s ease;
-    box-shadow: none !important; /* Remove o fundo preto residual */
+    box-shadow: none !important;
 }
 
-/* O texto de dica (seu@email.com) */
 .premium-input::placeholder {
     color: #555 !important;
     font-weight: 400;
@@ -91,7 +90,6 @@
     outline: none !important;
 }
 
-/* Arruma o fundo branco automático do navegador */
 .premium-input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
     -webkit-text-fill-color: #121212 !important;
@@ -198,7 +196,7 @@
    ========================================= */
 .cart-toast {
     position: fixed;
-    top: 20px;
+    top: 90px;
     right: 20px;
     background-color: #121212;
     color: #c9933b;

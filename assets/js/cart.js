@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     updateCartCount();
-    
+
     // Se estivermos na página do carrinho, renderiza os itens
     if (document.getElementById('cartItemsContainer')) {
         renderCart();
@@ -21,26 +21,36 @@ function updateCartCount() {
     }
 }
 
-// Função para adicionar carro (Será chamada nos botões da página modelos.php)
-window.addToCart = function(nome, versao, preco, imagemUrl) {
+// Adicionar ao carrinho (com notificação Toast)
+window.addToCart = function (nome, versao, preco, imagemUrl) {
     const cart = getCart();
     const novoCarro = { nome, versao, preco, imagemUrl };
-    
+
     cart.push(novoCarro);
     localStorage.setItem('aurora_cart', JSON.stringify(cart));
-    
+
     updateCartCount();
-    alert(nome + ' adicionado à sua lista de solicitações!');
+
+    const toast = document.getElementById('cartToast');
+    const toastMsg = document.getElementById('toastMessage');
+
+    if (toast && toastMsg) {
+        toastMsg.innerText = nome + ' ADICIONADO À LISTA';
+        toast.classList.remove('d-none');
+        setTimeout(() => { toast.classList.add('d-none'); }, 3000);
+    } else {
+        alert(nome + ' adicionado à sua lista de solicitações!');
+    }
 }
 
-// Remover carro do carrinho
-window.removeFromCart = function(index) {
+// Remover carro do carrinho (Lógica principal)
+window.removeFromCart = function (index) {
     let cart = getCart();
     cart.splice(index, 1);
     localStorage.setItem('aurora_cart', JSON.stringify(cart));
-    
+
     updateCartCount();
-    renderCart(); // Recarrega a lista na tela
+    if (typeof renderCart === "function") renderCart(); // Recarrega a lista na tela
 }
 
 // Renderizar itens na página carrinho.php
@@ -49,18 +59,20 @@ function renderCart() {
     const container = document.getElementById('cartItemsContainer');
     const totalItems = document.getElementById('cartTotalItems');
     const btnSolicitar = document.getElementById('btnSolicitar');
-    
+
+    if (!container) return; // Segurança caso não esteja na página do carrinho
+
     container.innerHTML = ''; // Limpa antes de renderizar
-    
+
     if (cart.length === 0) {
         container.innerHTML = '<p class="text-muted text-center py-5">Seu carrinho está vazio. Explore nossos <a href="modelos.php">modelos</a>.</p>';
-        btnSolicitar.disabled = true;
-        totalItems.innerText = '0';
+        if (btnSolicitar) btnSolicitar.disabled = true;
+        if (totalItems) totalItems.innerText = '0';
         return;
     }
 
-    btnSolicitar.disabled = false;
-    totalItems.innerText = cart.length;
+    if (btnSolicitar) btnSolicitar.disabled = false;
+    if (totalItems) totalItems.innerText = cart.length;
 
     cart.forEach((carro, index) => {
         const itemHtml = `
@@ -71,94 +83,88 @@ function renderCart() {
                     <p>Versão: ${carro.versao}</p>
                     <p class="fw-bold mt-2">${carro.preco}</p>
                 </div>
-                <button class="btn-remove-cart" onclick="removeFromCart(${index})">Remover</button>
+                <button class="btn-remove-cart" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#confirmarRemoverItemModal" 
+                        onclick="prepararRemocao(${index})">
+                    Remover
+                </button>
             </div>
         `;
         container.innerHTML += itemHtml;
     });
 }
 
-// Lógica para envio da proposta profissional
-document.addEventListener('submit', function(e) {
+// ==========================================
+// LÓGICA DE PROPOSTA
+// ==========================================
+document.addEventListener('submit', function (e) {
     if (e.target && e.target.id === 'propostaForm') {
-        e.preventDefault(); // Impede o envio real (que recarregaria a página)
-
+        e.preventDefault(); 
         const formContent = document.getElementById('formContent');
         const successMessage = document.getElementById('successMessage');
 
-        // Esconde o formulário e mostra o sucesso com uma transição suave
-        formContent.classList.add('d-none');
-        successMessage.classList.remove('d-none');
+        if (formContent) formContent.classList.add('d-none');
+        if (successMessage) successMessage.classList.remove('d-none');
 
-        // Limpa o carrinho local após a proposta ser "enviada"
         localStorage.removeItem('aurora_cart');
-        
-        // Atualiza a contagem no header e a lista na página
-        if (typeof updateCartCount === "function") updateCartCount();
+        updateCartCount();
         if (typeof renderCart === "function") renderCart();
     }
 });
 
-window.addToCart = function(nome, versao, preco, imagemUrl) {
-    const cart = getCart();
-    const novoCarro = { nome, versao, preco, imagemUrl };
-    
-    cart.push(novoCarro);
-    localStorage.setItem('aurora_cart', JSON.stringify(cart));
-    
-    updateCartCount();
+// ==========================================
+// LÓGICA DOS MODAIS: REMOVER E ESVAZIAR
+// ==========================================
+let itemParaRemover = null;
 
-
-    const toast = document.getElementById('cartToast');
-    const toastMsg = document.getElementById('toastMessage');
-    
-    if (toast) {
-        toastMsg.innerText = nome + ' ADICIONADO À LISTA';
-        toast.classList.remove('d-none');
-        
-        // Esconde automaticamente após 3 segundos
-        setTimeout(() => {
-            toast.classList.add('d-none');
-        }, 3000);
-    }
+// Função chamada pelo botão no item do carrinho
+window.prepararRemocao = function(index) {
+    itemParaRemover = index;
 }
 
-// ==========================================
-// LÓGICA PARA ESVAZIAR O CARRINHO
-// ==========================================
-document.addEventListener('click', function(e) {
-    // Usamos o 'closest' para garantir que funcione mesmo se o usuário clicar exatamente em cima do ícone da lixeira
-    const btnLimpar = e.target.closest('#btnLimparCarrinho');
+document.addEventListener('DOMContentLoaded', function() {
     
-    if (btnLimpar) {
-        // Confirmação de segurança (UX)
-        if (confirm("Tem certeza que deseja remover todos os veículos da sua lista?")) {
-            
-            // 1. Remove os dados salvos no navegador
+    // 1. Confirmação do Modal de Remover Item Individual
+    const btnConfirmarIndividual = document.getElementById('btnConfirmarRemoverItem');
+    if (btnConfirmarIndividual) {
+        btnConfirmarIndividual.addEventListener('click', function() {
+            if (itemParaRemover !== null) {
+                removeFromCart(itemParaRemover);
+                
+                const modalElement = document.getElementById('confirmarRemoverItemModal');
+                if (modalElement) {
+                    const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+                    if (modalInstance) modalInstance.hide();
+                }
+                
+                itemParaRemover = null;
+            }
+        });
+    }
+
+    // 2. Confirmação do Modal de Esvaziar Tudo
+    const btnConfirmarEsvaziar = document.getElementById('btnConfirmarEsvaziar');
+    if (btnConfirmarEsvaziar) {
+        btnConfirmarEsvaziar.addEventListener('click', function() {
             localStorage.removeItem('aurora_cart');
             
-            // 2. Atualiza a bolinha vermelha no header (se a função existir)
-            if (typeof updateCartCount === "function") {
-                updateCartCount();
+            if (typeof updateCartCount === "function") updateCartCount();
+            if (typeof renderCart === "function") renderCart();
+            
+            const modalElement = document.getElementById('confirmarEsvaziarModal');
+            if (modalElement) {
+                const modalInstance = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+                if (modalInstance) modalInstance.hide();
             }
             
-            // 3. Recarrega a lista na tela para mostrar que está vazio
-            if (typeof renderCart === "function") {
-                renderCart();
-            }
-            
-            // 4. Dispara a notificação visual (Toast)
             const toast = document.getElementById('cartToast');
             const toastMsg = document.getElementById('toastMessage');
-            
             if (toast && toastMsg) {
                 toastMsg.innerText = 'CARRINHO ESVAZIADO';
                 toast.classList.remove('d-none');
-                
-                setTimeout(() => {
-                    toast.classList.add('d-none');
-                }, 3000);
+                setTimeout(() => { toast.classList.add('d-none'); }, 3000);
             }
-        }
+        });
     }
 });

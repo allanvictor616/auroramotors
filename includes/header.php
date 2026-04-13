@@ -22,11 +22,11 @@
     </div>
 
     <header class="aurora-header">
-    <div class="logo">
-        <a href="index.php">
-            <img src="assets/img/logo_aurora_motors.png" alt="Aurora Motors Logo" class="main-logo">
-        </a>
-    </div>
+        <div class="logo">
+            <a href="index.php">
+                <img src="assets/img/logo_aurora_motors.png" alt="Aurora Motors Logo" class="main-logo">
+            </a>
+        </div>
 
         <nav class="main-nav">
             <ul>
@@ -40,11 +40,11 @@
                             <div class="megamenu-column">
                                 <h4>COMPRE ONLINE</h4>
                                 <ul>
-                                    <li><a href="#">Condições Especiais</a></li>
-                                    <li><a href="#">Aurora Vendas Corporativas</a></li>
-                                    <li><a href="#">Aurora Premium Selection</a></li>
-                                    <li><a href="#">Aurora Individual</a></li>
-                                    <li><a href="#">Aurora ConnectedDrive Store</a></li>
+                                    <li><a href="condicoes-especiais.php">Condições Especiais</a></li>
+                                    <li><a href="vendas-corporativas.php">Aurora Vendas Corporativas</a></li>
+                                    <li><a href="premium-selection.php">Aurora Premium Selection</a></li>
+                                    <li><a href="aurora-individual.php">Aurora Individual</a></li>
+                                    <li><a href="connecteddrive-store.php">Aurora ConnectedDrive Store</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -56,25 +56,11 @@
                     <div class="megamenu">
                         <div class="megamenu-content">
                             <div class="megamenu-column">
-                                <h4>Serviços Financeiros</h4>
+                                <h4>DESCUBRA A AURORA</h4>
                                 <ul>
-                                    <li><a href="#">Opções de Financiamento</a></li>
-                                    <li><a href="#">Simule seu financiamento</a></li>
-                                    <li><a href="#">Seguros e Consórcio</a></li>
-                                </ul>
-                            </div>
-                            <div class="megamenu-column">
-                                <h4>Serviços</h4>
-                                <ul>
-                                    <li><a href="#">Aurora Service</a></li>
-                                    <li><a href="#">Aurora Fidelidade</a></li>
-                                </ul>
-                            </div>
-                            <div class="megamenu-column">
-                                <h4>Peças e Acessórios</h4>
-                                <ul>
-                                    <li><a href="#">Acessórios Originais</a></li>
-                                    <li><a href="#">Aurora Lifestyle</a></li>
+                                    <li><a href="servicos-financeiros.php">Serviços Financeiros</a></li>
+                                    <li><a href="aurora-service.php">Aurora Service & Fidelidade</a></li>
+                                    <li><a href="lifestyle-acessorios.php">Acessórios & Lifestyle</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +69,7 @@
             </ul>
         </nav>
 
-<div class="header-actions">
+        <div class="header-actions">
             <button type="button" class="btn btn-login-header" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Login
             </button>

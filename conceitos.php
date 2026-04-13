@@ -34,7 +34,7 @@ include 'includes/header.php';
                 <h2 class="fw-light mb-4">Propulsão Quantum-Electric</h2>
                 <p class="text-muted">O futuro não é apenas elétrico, é quântico. Estamos testando células de energia de estado sólido que permitem uma autonomia de até $1.200 \text{ km}$ com uma única carga de apenas 5 minutos. É a liberdade total, sem emissões.</p>
                 <div class="p-3 bg-light border-start border-dark border-4">
-                    <p class="mb-0 italic text-dark">"Não estamos apenas mudando o motor, estamos mudando a forma como o mundo se move." – Diretor de Engenharia, Aurora Motors.</p>
+                    <p class="mb-0 italic text-dark">"Não estamos apenas mudando o motor, estamos mudando a forma como o mundo se move." – Gem Victor Diretor de Engenharia, Aurora Motors.</p>
                 </div>
             </div>
             <div class="col-md-6">

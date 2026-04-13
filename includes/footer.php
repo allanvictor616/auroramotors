@@ -14,14 +14,6 @@
             <h4>Fale com a Aurora</h4>
             <ul>
                 <li><a href="contato.php">Fale conosco</a></li>
-                <li><a href="#" data-bs-toggle="modal" data-bs-target="#propostaModal">Solicite uma proposta</a></li>
-                <li><a href="concessionarias.php">Encontre uma Concessionária</a></li>
-            </ul>
-            
-            <h4 style="margin-top: 30px;">Compre seu Aurora</h4>
-            <ul>
-                <li><a href="configure.php">Configure o seu</a></li>
-                <li><a href="modelos.php">Modelos e Preços</a></li>
             </ul>
         </div>
         

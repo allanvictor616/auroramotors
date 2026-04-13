@@ -6,7 +6,7 @@ include 'includes/header.php';
     <main class="modelos-page">
         <div class="modelos-header">
             <h1>Descubra e configure todos os modelos Aurora.</h1>
-            <p>Explore nossos modelos de carros mais recentes para encontrar a tecnologia inteligente, os recursos inovadores e o tipo de motor certo para você. [cite: 247]</p>
+            <p>Explore nossos modelos de carros mais recentes para encontrar a tecnologia inteligente, os recursos inovadores e o tipo de motor certo para você.</p>
         </div>
 
         <div class="modelos-container">
