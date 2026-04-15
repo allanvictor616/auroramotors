@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -40,16 +46,12 @@
                             <div class="megamenu-column">
                                 <h4>COMPRE ONLINE</h4>
                                 <ul>
-                                    <li><a href="condicoes-especiais.php">Condições Especiais</a></li>
-                                    <li><a href="vendas-corporativas.php">Aurora Vendas Corporativas</a></li>
+                                    <li><a href="vendas-especiais.php">Condições & Vendas Corporativas</a></li>
                                     <li><a href="premium-selection.php">Aurora Premium Selection</a></li>
-                                    <li><a href="aurora-individual.php">Aurora Individual</a></li>
-                                    <li><a href="connecteddrive-store.php">Aurora ConnectedDrive Store</a></li>
+                                    <li><a href="aurora-exclusive.php">Aurora Exclusive & Tech</a></li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </li>
+                        </div> </div> </li>
 
                 <li class="has-megamenu">
                     <a href="#">Descubra a Aurora <i class="bi bi-chevron-down ms-1" style="font-size: 10px;"></i></a>
@@ -69,10 +71,27 @@
             </ul>
         </nav>
 
-        <div class="header-actions">
-            <button type="button" class="btn btn-login-header" data-bs-toggle="modal" data-bs-target="#loginModal">
-                Login
-            </button>
+        <div class="header-actions d-flex align-items-center gap-3">
+            
+            <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] === true): ?>
+                <div class="dropdown">
+                    <a href="#" class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 14px; font-weight: 500;">
+                        <i class="bi bi-person-circle fs-5" style="color: #c9933b;"></i>
+                        <span class="d-none d-md-inline">Olá, <?= $_SESSION['nome_usuario']; ?></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end rounded-0 shadow border-0 mt-3" style="min-width: 200px;">
+                        <li><a class="dropdown-item py-2" href="minha-conta.php"><i class="bi bi-person me-2"></i> Minha Conta</a></li>
+                        <li><a class="dropdown-item py-2" href="meus-pedidos.php"><i class="bi bi-box-seam me-2"></i> Meus Pedidos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item py-2 text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i> Sair</a></li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <button type="button" class="btn btn-login-header" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    Login
+                </button>
+            <?php endif; ?>
+
             <a href="carrinho.php" class="cart-icon-link" style="color: #333; text-decoration: none;">
                 <i class="bi bi-cart2"></i> <span class="cart-counter" id="cartCount">0</span>
             </a>
@@ -82,7 +101,6 @@
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content premium-modal">
-                
                 <div class="modal-header border-0 pb-0">
                     <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal"></button>
                 </div>
@@ -92,7 +110,7 @@
                         
                         <div class="form-section">
                             <h5 class="text-center mb-4" style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: #121212;">Login Aurora</h5>
-                            <form id="formLogin">
+                            <form action="processa_login.php" method="POST" id="formLogin">
                                 <div class="mb-3">
                                     <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">E-mail</label>
                                     <input type="email" class="form-control premium-input" placeholder="seu@email.com">
@@ -101,7 +119,7 @@
                                     <label class="form-label" style="color: #666; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">Senha</label>
                                     <input type="password" class="form-control premium-input" placeholder="••••••••">
                                 </div>
-                                <button type="button" class="btn btn-primary w-100 premium-btn mb-3" data-bs-dismiss="modal">Entrar</button>
+                                <button type="submit" class="btn btn-primary w-100 premium-btn mb-3">Entrar</button>
                                 
                                 <div class="text-center">
                                     <a href="#" id="btnGoRegister" class="text-decoration-none" style="font-size: 14px; color: #555; transition: 0.3s;">Não possui conta? <strong style="color: #c9933b;">Criar agora</strong></a>

@@ -1,53 +1,96 @@
 <?php include 'includes/header.php'; ?>
 
-<main class="lifestyle-page">
-    <section class="position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assets/img/hero-lifestyle.png'); background-size: cover; background-position: center; height: 80vh;">
-        <div class="container position-relative h-100 d-flex flex-column justify-content-center align-items-end text-end text-white">
-            <h1 class="display-4 fw-light mb-3">A paixão não fica na garagem.</h1>
-            <p class="lead" style="max-width: 500px;">Acessórios originais para potencializar o seu veículo e a coleção exclusiva Aurora Lifestyle para vestir a marca.</p>
+<style>
+    .lifestyle-hero {
+        position: relative;
+        height: 85vh;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+    }
+    .dark-section {
+        background-color: #121212;
+        color: #ffffff;
+    }
+    .product-card {
+        border: none;
+        background: transparent;
+        transition: transform 0.4s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+    }
+    .product-card img {
+        border-radius: 0;
+        margin-bottom: 20px;
+    }
+    .product-title {
+        font-weight: 300;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+    }
+</style>
+
+<main>
+    <section class="lifestyle-hero" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero-lifestyle.png');">
+        <div class="container text-end text-white">
+            <h1 class="display-3 fw-light mb-3">A paixão não fica na garagem.</h1>
+            <p class="lead float-end" style="max-width: 500px;">Acessórios originais para potencializar o seu veículo e a coleção exclusiva Aurora Lifestyle para vestir a marca.</p>
         </div>
     </section>
 
-    <section class="container py-5">
-        <div class="text-center mb-5">
-            <h2 class="fw-light text-uppercase letter-spacing-2">Acessórios Originais</h2>
-            <p class="text-muted">Projetados pelos mesmos engenheiros que criaram o seu carro.</p>
+    <section class="container py-5 my-5">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-uppercase" style="color: #c9933b; letter-spacing: 2px;">Equipamentos Originais</h6>
+                <h2 class="display-6 fw-light text-dark">Performance e Praticidade</h2>
+            </div>
         </div>
         
-        <div class="row g-4 mb-5">
-            <div class="col-md-4 text-center">
-                <div class="p-4 border bg-light h-100">
-                    <i class="bi bi-vinyl mb-3" style="font-size: 2rem;"></i>
-                    <h5 class="fw-light">Rodas de Liga Leve</h5>
-                    <p class="text-muted small">Designs forjados para reduzir peso, melhorar a refrigeração dos freios e dar um visual agressivo.</p>
+        <div class="row g-5">
+            <div class="col-md-4">
+                <div class="product-card text-center">
+                    <div class="bg-light p-4 mb-3" style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-vinyl" style="font-size: 4rem; color: #555;"></i>
+                    </div>
+                    <h4 class="product-title text-dark">Rodas Forjadas 22"</h4>
+                    <p class="text-muted small">Design aerodinâmico para máxima eficiência.</p>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
-                <div class="p-4 border bg-light h-100">
-                    <i class="bi bi-briefcase mb-3" style="font-size: 2rem;"></i>
-                    <h5 class="fw-light">Transporte e Bagagem</h5>
-                    <p class="text-muted small">Racks de teto aerodinâmicos, suportes para bicicletas e malas sob medida para o porta-malas.</p>
+            <div class="col-md-4">
+                <div class="product-card text-center">
+                    <div class="bg-light p-4 mb-3" style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-briefcase" style="font-size: 4rem; color: #555;"></i>
+                    </div>
+                    <h4 class="product-title text-dark">Travel Pack</h4>
+                    <p class="text-muted small">Suportes de teto e malas sob medida.</p>
                 </div>
             </div>
-            <div class="col-md-4 text-center">
-                <div class="p-4 border bg-light h-100">
-                    <i class="bi bi-plugin mb-3" style="font-size: 2rem;"></i>
-                    <h5 class="fw-light">Tecnologia Extra</h5>
-                    <p class="text-muted small">Câmeras de gravação onboard (Dashcams) e displays traseiros para entretenimento.</p>
+            <div class="col-md-4">
+                <div class="product-card text-center">
+                    <div class="bg-light p-4 mb-3" style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-ev-station" style="font-size: 4rem; color: #555;"></i>
+                    </div>
+                    <h4 class="product-title text-dark">Wallbox Premium</h4>
+                    <p class="text-muted small">Carregamento ultrarrápido residencial.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <hr class="my-5 opacity-25">
-
-        <div class="row align-items-center text-center text-md-start">
-            <div class="col-md-5">
-                <h2 class="fw-light text-uppercase mb-3">Coleção Lifestyle</h2>
-                <p class="text-muted">O espírito da Aurora Motors no seu dia a dia. Visite nossa boutique nas concessionárias e descubra peças desenhadas com os mesmos materiais nobres dos nossos veículos: jaquetas em couro legítimo, relógios cronógrafos em fibra de carbono e artigos de viagem sofisticados.</p>
-                <button class="btn btn-outline-dark px-4 py-2 mt-3" style="border-radius: 0; letter-spacing: 1px;">ENCONTRAR BOUTIQUE</button>
-            </div>
-            <div class="col-md-7 mt-4 mt-md-0">
-                <img src="assets/img/boutique-itens.png" alt="Itens Aurora Lifestyle" class="img-fluid rounded">
+    <section class="dark-section py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h6 class="text-uppercase" style="color: #c9933b; letter-spacing: 2px;">A Coleção</h6>
+                    <h2 class="display-5 fw-light mb-4">Aurora Boutique</h2>
+                    <p class="text-white-50 mb-4" style="line-height: 1.8;">Vista o espírito da inovação. Nossa linha de roupas e acessórios pessoais é desenhada com os mesmos materiais nobres dos nossos veículos: fibra de carbono, couro legítimo e metais escovados.</p>
+                    <button class="btn btn-outline-light px-5 py-3" style="border-radius: 0; letter-spacing: 1px;">EXPLORAR CATÁLOGO</button>
+                </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <img src="assets/img/boutique-itens.png" alt="Coleção Aurora Boutique" class="img-fluid rounded-0" style="height: 500px; width: 100%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    </div>
             </div>
         </div>
     </section>

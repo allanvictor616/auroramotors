@@ -1,84 +1,95 @@
-<?php 
+<?php include 'includes/header.php'; ?>
 
-include 'includes/header.php'; 
-?>
+<style>
+    /* Força o fundo do site inteiro a ficar escuro nessa página */
+    body { background-color: #0a0a0a !important; color: #fff; }
+    
+    .concept-hero {
+        position: relative;
+        height: 100vh; /* Ocupa a tela inteira */
+        background-attachment: fixed; /* Efeito Parallax */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .concept-title {
+        font-size: 5rem;
+        font-weight: 200;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+    }
+    .editorial-block {
+        padding: 120px 0;
+    }
+    .neon-accent {
+        color: #00d2ff; /* Um azul elétrico/neon comum em carros elétricos/conceito */
+    }
+    .spec-line {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
 
-<main class="conceitos-page">
-    <section class="hero-conceito" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero-conceito.png');">
-        <div class="container text-center text-white d-flex flex-column justify-content-center align-items-center" style="height: 60vh;">
-            <h1 class="display-3 fw-light mb-3">O Amanhã, Hoje.</h1>
-            <p class="lead" style="max-width: 700px; letter-spacing: 1px;">Conheça a Aurora Vision: onde a engenharia de ponta encontra o design transcendental para definir os próximos 50 anos da mobilidade premium.</p>
+<main>
+    <section class="concept-hero" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url('assets/img/hero-conceito.png');">
+        <div class="text-center text-white">
+            <h1 class="concept-title mb-4">Aurora Vision</h1>
+            <p class="lead" style="max-width: 700px; margin: 0 auto; font-weight: 300;">Onde a engenharia de ponta encontra o design transcendental para definir os próximos 50 anos da mobilidade premium.</p>
         </div>
     </section>
 
-    <section class="container pt-5 pb-5">
-        <div class="row align-items-center mb-5">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="fw-light mb-4">Design Orgânico e Fluidez</h2>
-                <p class="text-muted">Nossos protótipos são esculpidos pelo vento. No laboratório de design da Aurora, utilizamos túneis de vento digitais e inteligência artificial para criar formas que eliminam o arrasto e maximizam a eficiência energética, sem perder a elegância atemporal que define nossa marca.</p>
-                <ul class="list-unstyled mt-3 text-muted">
-                    <li><i class="bi bi-check2"></i> Coeficiente de arrasto recorde ($C_d < 0.19$)</li>
-                    <li><i class="bi bi-check2"></i> Superfícies ativas que se moldam à velocidade</li>
-                    <li><i class="bi bi-check2"></i> Pintura auto-regenerativa com nanotecnologia</li>
-                </ul>
+    <section class="editorial-block container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h6 class="neon-accent text-uppercase mb-3" style="letter-spacing: 2px;">01. A Forma</h6>
+                <h2 class="display-4 fw-light mb-4">Design Orgânico <br>e Fluidez</h2>
+                <p class="text-white-50" style="line-height: 1.8; font-size: 1.1rem;">Nossos protótipos são esculpidos pelo vento. No laboratório de design da Aurora, utilizamos túneis de vento digitais e inteligência artificial para criar formas que eliminam o arrasto aerodinâmico, parecendo estar em movimento mesmo quando parados.</p>
             </div>
-            <div class="col-md-6">
-                <img src="assets/img/design-futuro.png" class="img-fluid shadow-lg" alt="Design Futurista Aurora">
+            <div class="col-lg-5 offset-lg-1 mt-5 mt-lg-0">
+                 <img src="assets/img/lab-aurora.jpg" class="img-fluid" style="border: 1px solid rgba(255,255,255,0.1);" alt="Aurora Design Lab">
             </div>
         </div>
+    </section>
 
-        <hr class="my-5 opacity-25">
-
-        <div class="row align-items-center flex-row-reverse">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h2 class="fw-light mb-4">Propulsão Quantum-Electric</h2>
-                <p class="text-muted">O futuro não é apenas elétrico, é quântico. Estamos testando células de energia de estado sólido que permitem uma autonomia de até $1.200 \text{ km}$ com uma única carga de apenas 5 minutos. É a liberdade total, sem emissões.</p>
-                <div class="p-3 bg-light border-start border-dark border-4">
-                    <p class="mb-0 italic text-dark">"Não estamos apenas mudando o motor, estamos mudando a forma como o mundo se move." – Gem Victor Diretor de Engenharia, Aurora Motors.</p>
+    <section class="editorial-block" style="background-color: #111;">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h6 class="neon-accent text-uppercase mb-2" style="letter-spacing: 2px;">Projeto Hyper-GT</h6>
+                    <h2 class="display-5 fw-light">O Conceito "Nebula"</h2>
                 </div>
             </div>
-            <div class="col-md-6">
-                <img src="assets/img/motor-futuro.png" class="img-fluid shadow-lg" alt="Tecnologia de Motor Aurora">
+            
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <img src="assets/img/lab-nebulacar.png" alt="Concept Car Nebula" class="img-fluid w-100" style="height: 400px; object-fit: cover; border: 1px solid rgba(255,255,255,0.1);">
+                </div>
+                <div class="col-lg-4 offset-lg-1">
+                    <h4 class="fw-light mb-4">Especificações Projetadas</h4>
+                    <div class="spec-line">
+                        <span class="text-white-50">Propulsão</span>
+                        <span class="fw-bold">Bateria de Estado Sólido</span>
+                    </div>
+                    <div class="spec-line">
+                        <span class="text-white-50">Autonomia Est.</span>
+                        <span class="fw-bold">1.200 km</span>
+                    </div>
+                    <div class="spec-line">
+                        <span class="text-white-50">0 a 100 km/h</span>
+                        <span class="fw-bold text-white">1.8 Segundos</span>
+                    </div>
+                    <div class="spec-line">
+                        <span class="text-white-50">Condução</span>
+                        <span class="fw-bold">Nível 5 (100% Autônomo)</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <section class="bg-dark text-white py-5">
-        <div class="container text-center py-4">
-            <h3 class="fw-light mb-4">Deseja ser notificado sobre o futuro?</h3>
-            <p class="mb-4 opacity-75">Assine nossa newsletter exclusiva para entusiastas e receba convites para eventos de revelação de protótipos.</p>
-            <form class="d-flex justify-content-center gap-2 mx-auto" style="max-width: 500px;">
-                <input type="email" class="form-control premium-input border-0" placeholder="Seu melhor e-mail" required>
-                <button type="submit" class="btn btn-primary premium-btn px-4">INSCREVER</button>
-            </form>
         </div>
     </section>
 </main>
 
-<style>
-/* Estilos específicos para a página de Conceitos */
-.conceitos-page .hero-conceito {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Efeito Parallax */
-}
-
-.conceitos-page h2 {
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-}
-
-.conceitos-page p {
-    line-height: 1.8;
-}
-
-.conceitos-page .img-fluid {
-    border-radius: 0px; /* Mantém o visual industrial e reto */
-}
-</style>
-
-<?php 
-
-include 'includes/footer.php'; 
-?>
+<?php include 'includes/footer.php'; ?>

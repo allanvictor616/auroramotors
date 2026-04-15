@@ -17,7 +17,7 @@
             <div class="col-md-6 ps-md-5">
                 <h3 class="fw-light mb-4">O Padrão Ouro em Manutenção</h3>
                 <p class="text-muted">Nossos centros técnicos parecem laboratórios. Equipados com telemetria avançada, nossos mecânicos diagnosticam o seu veículo antes mesmo de você chegar à concessionária. Trabalhamos exclusivamente com peças genuínas, garantindo a performance original, a segurança e a valorização do seu modelo.</p>
-                <button class="btn btn-dark premium-btn px-4 mt-3">AGENDAR REVISÃO</button>
+                <a href="agendar-revisao.php" class="btn btn-primary premium-btn px-5 py-3 text-uppercase" style="letter-spacing: 1px; border-radius: 0;">Agendar Revisão</a>
             </div>
         </div>
 
