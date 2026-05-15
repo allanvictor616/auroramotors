@@ -234,6 +234,3 @@ Projeto acadêmico desenvolvido para fins de estudo e apresentação.
 O Aurora Motors foi desenvolvido como um projeto acadêmico completo, simulando um ambiente real de concessionária premium com integração entre front-end, back-end e banco de dados.
 
 O sistema demonstra conceitos de navegação, autenticação, manipulação de dados, organização de interface, carrinho de compras e relacionamento entre tabelas no MySQL.
-
-
-Pode copiar **somente esse bloco acima** e substituir tudo no `README.md`. Não coloca aquelas frases finais tipo “Pode manter esse arquivo...” dentro do README, porque aquilo era só orientação minha para você, não faz parte do arquivo.
