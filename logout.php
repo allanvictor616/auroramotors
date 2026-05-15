@@ -1,6 +1,10 @@
 <?php
 session_start();
-session_destroy(); // Apaga o login falso
+
+$_SESSION = [];
+
+session_destroy();
+
 header("Location: index.php");
 exit;
 ?>

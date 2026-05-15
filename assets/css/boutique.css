@@ -1,0 +1,233 @@
+.boutique-page {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.boutique-header {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: #121212;
+    color: #fff;
+}
+
+.boutique-header h1 {
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 4rem);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.boutique-header p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #cfcfcf;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.boutique-container {
+    width: min(1400px, 92%);
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+}
+
+.boutique-sidebar {
+    background: #fff;
+    padding: 35px 28px;
+    height: fit-content;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 3px solid #121212;
+    position: sticky;
+    top: 100px;
+}
+
+.boutique-sidebar h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #121212;
+}
+
+.boutique-filtros-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.btn-boutique-filtro,
+.btn-boutique-limpar {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 13px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #555;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn-boutique-filtro:hover,
+.btn-boutique-filtro.ativo {
+    background: #121212;
+    color: #fff;
+    border-color: #121212;
+}
+
+.btn-boutique-limpar {
+    margin-top: 20px;
+    text-align: center;
+    background: transparent;
+    color: #c9933b;
+    border-color: #c9933b;
+}
+
+.btn-boutique-limpar:hover {
+    background: #c9933b;
+    color: #fff;
+}
+
+.boutique-vitrine {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.boutique-card {
+    background: #fff;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.boutique-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.09);
+}
+
+.boutique-card.escondido {
+    display: none;
+}
+
+.boutique-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #121212;
+    color: #fff;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    z-index: 2;
+}
+
+.boutique-img-box {
+    height: 220px;
+    background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.boutique-img-box img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    transition: 0.4s ease;
+}
+
+.boutique-card:hover .boutique-img-box img {
+    transform: scale(1.06);
+}
+
+.boutique-card h2 {
+    font-size: 22px;
+    font-weight: 300;
+    margin-bottom: 12px;
+    color: #121212;
+}
+
+.boutique-description {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 68px;
+    margin-bottom: 18px;
+}
+
+.boutique-price {
+    margin-top: auto;
+    margin-bottom: 0;
+    color: #121212;
+    font-size: 18px;
+}
+
+.boutique-price strong {
+    font-weight: 500;
+    color: #c9933b;
+}
+
+.boutique-toast {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    background: #121212;
+    color: #fff;
+    padding: 16px 22px;
+    z-index: 9999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border-left: 4px solid #c9933b;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+    .boutique-vitrine {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .boutique-container {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-sidebar {
+        position: static;
+    }
+
+    .boutique-filtros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .boutique-vitrine {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-filtros-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-card {
+        padding: 22px;
+    }
+
+    .boutique-img-box {
+        height: 190px;
+    }
+}

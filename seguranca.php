@@ -1,18 +1,71 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) { header("Location: index.php"); exit; }
-include 'includes/header.php'; 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once 'conexao.php';
+
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+    header("Location: index.php");
+    exit;
+}
+
+include 'includes/header.php';
 ?>
 
 <style>
     body { background-color: #f8f9fa; }
-    .account-hero { background-color: #121212; color: #fff; padding: 60px 0 40px; }
-    .account-sidebar { background: #fff; border: 1px solid #eaeaea; padding: 30px 0; }
-    .account-link { display: block; padding: 12px 30px; color: #555; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: 0.3s; border-left: 3px solid transparent; }
-    .account-link:hover, .account-link.active { color: #c9933b; background-color: #fafafa; border-left-color: #c9933b; font-weight: 500; }
-    .security-card { background: #fff; border: 1px solid #eaeaea; padding: 40px; margin-bottom: 30px; }
-    .form-control-security { border-radius: 0; background-color: #fafafa; border: 1px solid #ddd; padding: 12px 15px; }
-    .form-control-security:focus { border-color: #121212; box-shadow: none; background-color: #fff; }
+
+    .account-hero {
+        background-color: #121212;
+        color: #fff;
+        padding: 60px 0 40px;
+    }
+
+    .account-sidebar {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        padding: 30px 0;
+    }
+
+    .account-link {
+        display: block;
+        padding: 12px 30px;
+        color: #555;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .account-link:hover, .account-link.active {
+        color: #c9933b;
+        background-color: #fafafa;
+        border-left-color: #c9933b;
+        font-weight: 500;
+    }
+
+    .security-card {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        padding: 40px;
+        margin-bottom: 30px;
+    }
+
+    .form-control-security {
+        border-radius: 0;
+        background-color: #fafafa;
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+    }
+
+    .form-control-security:focus {
+        border-color: #121212;
+        box-shadow: none;
+        background-color: #fff;
+    }
 </style>
 
 <main>
@@ -39,41 +92,63 @@ include 'includes/header.php';
                     <a href="meus-veiculos.php" class="account-link"><i class="bi bi-car-front me-3 fs-5"></i> Meus Veículos</a>
                     <a href="agendamentos.php" class="account-link"><i class="bi bi-calendar-check me-3 fs-5"></i> Agendamentos</a>
                     <a href="seguranca.php" class="account-link active"><i class="bi bi-shield-lock me-3 fs-5"></i> Segurança</a>
-                    <hr class="mx-4 my-3 text-muted">
                     <a href="logout.php" class="account-link text-danger"><i class="bi bi-box-arrow-right me-3 fs-5"></i> Sair da Conta</a>
                 </div>
             </div>
 
             <div class="col-lg-9">
+
+                <?php if (isset($_SESSION['sucesso_senha'])): ?>
+                    <div class="alert alert-success">
+                        <?php echo $_SESSION['sucesso_senha']; unset($_SESSION['sucesso_senha']); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['erro_senha'])): ?>
+                    <div class="alert alert-danger">
+                        <?php echo $_SESSION['erro_senha']; unset($_SESSION['erro_senha']); ?>
+                    </div>
+                <?php endif; ?>
+
                 <h4 class="fw-light mb-4">Alterar Senha</h4>
+
                 <div class="security-card shadow-sm">
-                    <form>
+                    <form action="processa_alterar_senha.php" method="POST">
                         <div class="mb-4">
                             <label class="small text-uppercase mb-2 text-muted fw-bold">Senha Atual</label>
-                            <input type="password" class="form-control-security w-100" placeholder="Digite sua senha atual">
+                            <input type="password" name="senha_atual" class="form-control-security w-100" placeholder="Digite sua senha atual" required>
                         </div>
+
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <label class="small text-uppercase mb-2 text-muted fw-bold">Nova Senha</label>
-                                <input type="password" class="form-control-security w-100" placeholder="Pelo menos 8 caracteres">
+                                <input type="password" name="nova_senha" class="form-control-security w-100" placeholder="Pelo menos 6 caracteres" required>
                             </div>
+
                             <div class="col-md-6">
                                 <label class="small text-uppercase mb-2 text-muted fw-bold">Confirmar Nova Senha</label>
-                                <input type="password" class="form-control-security w-100" placeholder="Repita a nova senha">
+                                <input type="password" name="confirmar_senha" class="form-control-security w-100" placeholder="Repita a nova senha" required>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-dark rounded-0 px-5 py-2 text-uppercase" style="letter-spacing: 1px;">Atualizar Senha</button>
+
+                        <button type="submit" class="btn btn-dark rounded-0 px-5 py-2 text-uppercase" style="letter-spacing: 1px;">
+                            Atualizar Senha
+                        </button>
                     </form>
                 </div>
 
                 <h4 class="fw-light mb-4">Autenticação em Duas Etapas (2FA)</h4>
+
                 <div class="security-card shadow-sm d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="mb-1">Autenticação via SMS/E-mail</h6>
-                        <p class="text-muted small mb-0">Adicione uma camada extra de segurança ao seu Portal Aurora.</p>
+                        <p class="text-muted small mb-0">
+                            Recurso demonstrativo para apresentação do projeto.
+                        </p>
                     </div>
+
                     <div class="form-check form-switch fs-4">
-                        <input class="form-check-input" type="checkbox" role="switch" id="switch2FA" checked>
+                        <input class="form-check-input" type="checkbox" role="switch" id="switch2FA" checked disabled>
                     </div>
                 </div>
 
@@ -81,4 +156,5 @@ include 'includes/header.php';
         </div>
     </section>
 </main>
+
 <?php include 'includes/footer.php'; ?>

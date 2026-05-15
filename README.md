@@ -1,108 +1,239 @@
 # 🚗 Aurora Motors
 
-Institutional website developed as an academic project, simulating the digital presence of a premium car dealership.
+Projeto acadêmico desenvolvido para simular o site completo de uma concessionária premium, com páginas institucionais, área do cliente, sistema de login, propostas, agendamentos, boutique, carrinho de compras e integração com banco de dados MySQL.
 
 ---
 
-## 📌 About the Project
+## 📌 Sobre o Projeto
 
-**Aurora Motors** is a modern and responsive website created to showcase vehicles in an elegant and intuitive way, delivering an experience similar to major automotive brands.
+O **Aurora Motors** é um sistema web desenvolvido em PHP, MySQL, HTML, CSS, JavaScript e Bootstrap, simulando a experiência digital de uma marca automotiva premium.
 
-This project focuses on sophisticated design, usability, and smooth navigation, highlighting car models, promotions, and customer contact options.
-
----
-
-## 🎯 Objectives
-
-* Build a modern and responsive interface
-* Simulate a real-world dealership website
-* Apply front-end development concepts
-* Improve web page structuring skills
-* Practice project organization for portfolio
+O projeto possui interface visual sofisticada, páginas comerciais, área autenticada para clientes e funcionalidades conectadas ao banco de dados, permitindo demonstrar operações de CRUD e fluxo completo de navegação.
 
 ---
 
-## 🖥️ Features
+## 🎯 Objetivos
 
-* 🏠 Home page with brand highlights
-* 🚘 Vehicle showcase (sedans, SUVs, and hatchbacks)
-* 📋 Inventory section
-* 📞 Contact page
-* 🧭 Intuitive navigation
-* 🎨 Modern layout with high-quality images
-
----
-
-## 🛠️ Technologies Used
-
-* HTML5
-* CSS3
-* JavaScript
+- Criar um site institucional premium para uma concessionária fictícia.
+- Aplicar conceitos de front-end e back-end.
+- Trabalhar com banco de dados MySQL.
+- Demonstrar operações de CRUD.
+- Simular cadastro, login, edição de perfil, propostas, agendamentos e pedidos.
+- Organizar o projeto para apresentação acadêmica.
 
 ---
 
-## 📂 Project Structure
+## 🖥️ Funcionalidades
 
-```
-Aurora-Motors/
+### Área pública
+
+- Página inicial com identidade visual premium.
+- Página de modelos de veículos.
+- Página de boutique com produtos.
+- Página de serviços financeiros.
+- Página Aurora Service & Care.
+- Página de vendas especiais.
+- Página Aurora Premium Selection.
+- Página Aurora Exclusive & Tech.
+- Página Lifestyle & Acessórios.
+- Página de simulação de financiamento.
+
+### Área do cliente
+
+- Cadastro de usuário.
+- Login e logout.
+- Exibição do nome do cliente no header.
+- Página Minha Conta.
+- Edição de dados pessoais.
+- Cadastro, edição e exclusão de endereço.
+- Visualização de veículo vinculado ao cliente.
+- Página Meus Veículos.
+- Página de Segurança.
+- Histórico de propostas.
+- Histórico de compras.
+- Acompanhamento de pedidos.
+- Cancelamento de pedido.
+- Exibição de rastreio somente quando o pedido estiver enviado ou entregue.
+
+### Boutique e carrinho
+
+- Listagem de produtos fixos.
+- Listagem de produtos cadastrados no banco.
+- Filtro por categorias.
+- Adição de produtos ao carrinho.
+- Controle de quantidade.
+- Remoção de produtos.
+- Esvaziar carrinho.
+- Checkout com dados do cliente.
+- Registro da compra no banco.
+- Registro dos itens comprados no banco.
+
+### Banco de dados
+
+O projeto utiliza o banco:
+
+```txt
+aurora_motors
+
+Com tabelas como:
+
+usuarios
+enderecos_usuario
+veiculos
+propostas
+agendamentos
+produtos_boutique
+pedidos_boutique
+pedido_boutique_itens
+contatos
+
+🛠️ Tecnologias Utilizadas
+PHP
+MySQL
+phpMyAdmin
+HTML5
+CSS3
+JavaScript
+Bootstrap 5
+Bootstrap Icons
+XAMPP
+
+📂 Estrutura do Projeto
+auroramotors/
 │
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
 ├── assets/
-│   └── images/
+│   ├── css/
+│   ├── js/
+│   ├── img/
+│   └── video/
+│
+├── includes/
+│   ├── header.php
+│   └── footer.php
+│
+├── sql/
+│   └── aurora_motors.sql
+│
+├── index.php
+├── modelos.php
+├── boutique.php
+├── carrinho.php
+├── minha-conta.php
+├── meus-pedidos.php
+├── meus-veiculos.php
+├── agendamentos.php
+├── agendar-revisao.php
+├── seguranca.php
+├── simulacao.php
+├── vendas-especiais.php
+├── servicos-financeiros.php
+├── aurora-service.php
+├── premium-selection.php
+├── aurora-exclusive.php
+├── lifestyle-acessorios.php
+├── conexao.php
+├── processa_login.php
+├── processa_cadastro.php
+├── processa_atualizar_perfil.php
+├── processa_compra_boutique.php
+├── processa_cancelar_pedido.php
 └── README.md
-```
 
----
+🚀 Como Executar o Projeto
+1. Copiar o projeto para o XAMPP
 
-## 🚀 How to Run the Project
+Copie a pasta do projeto para:
 
-1. Clone this repository:
+C:\xampp\htdocs\
 
-```bash
-git clone https://github.com/your-username/aurora-motors.git
-```
+A estrutura deve ficar assim:
 
-2. Navigate to the project folder:
+C:\xampp\htdocs\auroramotors
+2. Iniciar o XAMPP
 
-```bash
-cd aurora-motors
-```
+Abra o XAMPP e inicie:
 
-3. Open the `index.html` file in your browser
+Apache
+MySQL
+3. Importar o banco de dados
 
----
+Acesse o phpMyAdmin:
 
-## 🌐 Deployment (Optional)
+http://localhost/phpmyadmin
 
-You can deploy this project for free using **GitHub Pages**:
+Depois:
 
-1. Go to **Settings**
-2. Click on **Pages**
-3. Select the `main` branch
-4. Click **Save**
+Clique em Importar.
+Selecione o arquivo:
+sql/aurora_motors.sql
+Clique em Executar.
+4. Acessar o projeto
 
----
+No navegador, acesse:
 
-## 📸 Project Preview
+http://localhost/auroramotors/
 
-*(You can add screenshots of your project here)*
+🔐 Dados de Teste
 
----
+Você pode criar um novo usuário diretamente pelo site usando o botão de cadastro.
 
-## 👨‍💻 Author
+Após criar a conta, é possível testar:
 
-Developed by **Allan**
-📍 Cotia - SP, Brazil
+Login.
+Edição de dados pessoais.
+Cadastro de endereço.
+Exclusão de endereço.
+Solicitação de proposta.
+Agendamento de revisão.
+Compra na boutique.
+Cancelamento de pedido.
+Alteração de status no banco para testar rastreio.
 
----
+🧪 Demonstração do CRUD
 
-## 📚 Final Notes
+O projeto permite demonstrar operações de CRUD em diferentes partes do sistema.
 
-This project was developed for academic purposes and as part of my learning journey in web development.
-I am continuously improving my skills and open to feedback and opportunities in the tech field.
+Create
+Cadastro de usuário.
+Cadastro de endereço.
+Criação de proposta.
+Criação de agendamento.
+Criação de pedido na boutique.
+Read
+Exibição dos dados do cliente.
+Exibição de veículos.
+Exibição de propostas.
+Exibição de agendamentos.
+Exibição de compras e itens do pedido.
+Update
+Atualização dos dados pessoais.
+Atualização de endereço.
+Atualização de status do pedido pelo banco.
+Delete
+Exclusão de endereço.
+Cancelamento de pedido por alteração de status.
 
----
+📦 Observações sobre Imagens
+
+As imagens do projeto ficam salvas na pasta:
+
+assets/img/
+
+O banco de dados armazena apenas o caminho da imagem, por exemplo:
+
+assets/img/boutique-limpeza.png
+
+👨‍💻 Autor
+
+Desenvolvido por Allan Victor Pehlivanidis França
+
+Projeto acadêmico desenvolvido para fins de estudo e apresentação.
+
+📚 Considerações Finais
+
+O Aurora Motors foi desenvolvido como um projeto acadêmico completo, simulando um ambiente real de concessionária premium com integração entre front-end, back-end e banco de dados.
+
+O sistema demonstra conceitos de navegação, autenticação, manipulação de dados, organização de interface, carrinho de compras e relacionamento entre tabelas no MySQL.
+
+
+Pode copiar **somente esse bloco acima** e substituir tudo no `README.md`. Não coloca aquelas frases finais tipo “Pode manter esse arquivo...” dentro do README, porque aquilo era só orientação minha para você, não faz parte do arquivo.

@@ -1,4 +1,7 @@
-/* 1. O Container Principal */
+/* =============================================================================
+   PÁGINA: HOME (index.php)
+   Bloco: hero principal com vídeo, overlay e card de boas-vindas.
+============================================================================= */
 .hero-home {
     position: relative;
     width: 100%;
@@ -8,7 +11,6 @@
     justify-content: center;
 }
 
-/* 2. O Vídeo de Fundo (Camada 1) */
 .hero-video {
     position: absolute;
     top: 0;
@@ -19,18 +21,16 @@
     z-index: 1;
 }
 
-/* 3. A Película (Camada 2) */
 .video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 2;
 }
 
-/* 4. O Card Branco (Camada 3) */
 .welcome-card {
     position: relative;
     z-index: 3;
@@ -42,7 +42,7 @@
     padding: 40px;
     text-align: center;
     max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .welcome-card h2 {
@@ -59,9 +59,10 @@
     font-weight: 500;
 }
 
-/* =========================================
-   Seção 2: Banners de Destaque
-   ========================================= */
+/* =============================================================================
+   PÁGINA: HOME (index.php)
+   Bloco: banners de destaque dos carros na página inicial.
+============================================================================= */
 .destaques-carros {
     width: 100%;
     display: flex;
@@ -129,9 +130,10 @@
     color: #000000;
 }
 
-/* =========================================
-   Páginas Legais e Textos Longos
-   ========================================= */
+/* =============================================================================
+   PÁGINAS: INSTITUCIONAIS / LEGAIS
+   Uso: páginas de texto longo, política, termos e conteúdos institucionais.
+============================================================================= */
 .legal-content {
     max-width: 900px;
     margin: 60px auto;
@@ -166,159 +168,1046 @@
     line-height: 1.8;
 }
 
-/* =========================================
-   Página de Modelos (Catálogo e Filtros)
-   ========================================= */
+/* =============================================================================
+   PÁGINA: MODELOS (modelos.php)
+   Objetivo: filtros, vitrine de carros, cards dos modelos e botão de proposta.
+============================================================================= */
 .modelos-page {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    max-width: none;
+    margin: 0;
 }
 
+/* MODELOS - Cabeçalho da página */
 .modelos-header {
-    margin-bottom: 50px;
+    text-align: center;
+    padding: 80px 20px 55px;
+    background: #121212;
+    color: #fff;
+    margin-bottom: 0;
 }
 
 .modelos-header h1 {
-    font-size: 36px;
     font-weight: 300;
-    margin-bottom: 10px;
-    color: #121212;
+    font-size: clamp(2rem, 4vw, 4rem);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    color: #fff;
 }
 
 .modelos-header p {
-    color: #666;
-    font-size: 16px;
-    max-width: 800px;
+    max-width: 780px;
+    margin: 0 auto;
+    color: #cfcfcf;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
+/* MODELOS - Container com sidebar + vitrine */
 .modelos-container {
-    display: flex;
+    width: min(1400px, 92%);
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 280px 1fr;
     gap: 40px;
     align-items: flex-start;
 }
 
+/* MODELOS - Sidebar de filtros */
 .filtros-sidebar {
-    width: 250px;
-    flex-shrink: 0;
+    background: #fff;
+    padding: 35px 28px;
+    height: fit-content;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 3px solid #121212;
+    position: sticky;
+    top: 100px;
+    width: auto;
 }
 
 .filtros-sidebar h3 {
-    font-weight: 400;
-    margin-bottom: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     font-size: 18px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: #121212;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .filtros-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 0;
 }
 
 .btn-filtro {
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 15px 10px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 13px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #555;
+    transition: 0.3s;
+    width: 100%;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-    transition: all 0.2s ease;
+    border-radius: 0;
 }
 
-.btn-filtro:hover, .btn-filtro.ativo {
+.btn-filtro:hover,
+.btn-filtro.ativo {
+    background: #121212;
+    color: #fff;
     border-color: #121212;
-    background: #f9f9f9;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .btn-limpar {
+    margin-top: 20px;
     width: 100%;
+    border: 1px solid #c9933b;
     background: transparent;
-    border: none;
-    text-decoration: underline;
-    color: #555;
+    color: #c9933b;
+    padding: 13px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
     cursor: pointer;
-    text-align: left;
-    padding: 10px 0;
-    font-size: 14px;
+    text-decoration: none;
+    border-radius: 0;
 }
 
 .btn-limpar:hover {
-    color: #121212;
+    background: #c9933b;
+    color: #fff;
 }
 
+/* MODELOS - Grid da vitrine */
 .carros-vitrine {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 28px;
     width: 100%;
 }
 
-/* =========================================
-   Vitrine de Carros (Cards Padronizados)
-   ========================================= */
-
+/* MODELOS - Cards dos veículos */
 .car-card {
     background: #fff;
-    padding: 20px;
-    transition: transform 0.3s ease;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    border: 1px solid #eee;
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    border: 1px solid #eee; 
+    min-height: 100%;
+    overflow: hidden;
 }
 
 .car-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.09);
 }
 
+.car-card.escondido {
+    display: none !important;
+}
+
+/* MODELOS - Badge da categoria do veículo */
 .car-badge {
-    background: #eee;
-    padding: 4px 8px;
-    font-size: 12px;
-    color: #666;
-    border-radius: 2px;
+    position: static;
+    display: inline-block;
+    width: fit-content;
+    background: #121212;
+    color: #fff;
+    padding: 7px 12px;
     text-transform: uppercase;
-    align-self: flex-start; /* Evita que o badge estique no flexbox */
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    border-radius: 0;
 }
 
-.car-card h2 {
-    font-size: 24px;
-    font-weight: 300;
-    margin: 15px 0;
-}
-
-/* MÁGICA DO BANCO DE DADOS: Padroniza o tamanho de todas as fotos */
-
+/* MODELOS - Imagem do veículo */
 .car-card img {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 260px;
     object-fit: cover;
     object-position: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+    transition: 0.4s ease;
+}
+
+.car-card:hover img {
+    transform: scale(1.03);
+}
+
+/* MODELOS - Títulos, textos e preço */
+.car-card h2 {
+    font-size: 26px;
+    font-weight: 300;
+    margin: 0 0 18px;
+    color: #121212;
+    letter-spacing: .3px;
+    line-height: 1.25;
 }
 
 .car-price {
     font-size: 14px;
-    color: #0066b2;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 22px;
 }
 
 .car-price strong {
-    color: #121212;
+    color: #c9933b;
     font-size: 18px;
     display: block;
     margin-top: 5px;
+    font-weight: 500;
+}
+
+/* MODELOS - Botão de solicitar proposta */
+.car-card .btn {
+    margin-top: auto !important;
+    border-radius: 0;
+    padding: 13px 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+
+/* MODELOS - Ordem visual interna dos cards */
+.car-card .car-badge {
+    order: 1;
+}
+
+.car-card h2 {
+    order: 2;
+}
+
+.car-card img {
+    order: 3;
+}
+
+.car-card .car-price {
+    order: 4;
 }
 
 .car-card .btn {
-    margin-top: auto !important; 
+    order: 5;
 }
 
+/* GLOBAL - Classe utilitária para filtros */
 .escondido {
     display: none !important;
+}
+
+/* =============================================================================
+   RESPONSIVIDADE: HOME + MODELOS
+============================================================================= */
+@media (max-width: 1100px) {
+    .carros-vitrine {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .modelos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros-sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .filtros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .carros-vitrine {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+
+    .car-info {
+        max-width: 80%;
+    }
+
+    .banner-gradient {
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    .carros-vitrine {
+        grid-template-columns: 1fr;
+    }
+
+    .car-card img {
+        height: 220px;
+    }
+
+    .car-info {
+        max-width: 90%;
+        padding-left: 6%;
+    }
+
+    .car-info h3 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 576px) {
+    .filtros-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modelos-header {
+        padding: 60px 20px 45px;
+    }
+
+    .modelos-container {
+        margin-top: 40px;
+    }
+
+    .car-card {
+        padding: 22px;
+    }
+
+    .hero-home {
+        height: 55vh;
+    }
+
+    .welcome-card {
+        padding: 28px 20px;
+        max-width: 90%;
+    }
+
+    .welcome-card h2 {
+        font-size: 22px;
+    }
+
+    .welcome-card p {
+        font-size: 15px;
+    }
+
+    .car-banner {
+        height: 60vh;
+    }
+
+    .btn-outline {
+        padding: 10px 28px;
+    }
+}
+
+
+/* =============================================================================
+   PÁGINA: BOUTIQUE (boutique.php)
+   Objetivo: controla a vitrine de produtos da Boutique Aurora Motors.
+   Observação: todos os cards, inclusive produtos novos, precisam ficar dentro
+   de .boutique-vitrine para manter o grid alinhado.
+============================================================================= */
+.boutique-page {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+.boutique-header {
+    text-align: center;
+    padding: 80px 20px 55px;
+    background: #121212;
+    color: #fff;
+}
+
+.boutique-header h1 {
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 4rem);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.boutique-header p {
+    max-width: 780px;
+    margin: 0 auto;
+    color: #cfcfcf;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.boutique-container {
+    width: min(1400px, 92%);
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.boutique-sidebar {
+    background: #fff;
+    padding: 35px 28px;
+    height: fit-content;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 3px solid #121212;
+    position: sticky;
+    top: 100px;
+}
+
+.boutique-sidebar h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #121212;
+}
+
+.boutique-filtros-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.btn-boutique-filtro {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    padding: 13px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #555;
+    transition: 0.3s;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.btn-boutique-filtro:hover,
+.btn-boutique-filtro.ativo {
+    background: #121212;
+    color: #fff;
+    border-color: #121212;
+}
+
+.btn-boutique-limpar {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid #c9933b;
+    background: transparent;
+    color: #c9933b;
+    padding: 13px 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 0;
+}
+
+.btn-boutique-limpar:hover {
+    background: #c9933b;
+    color: #fff;
+}
+
+.boutique-vitrine {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 28px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.boutique-card {
+    background: #fff;
+    padding: 28px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.boutique-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.09);
+}
+
+.boutique-card.escondido {
+    display: none !important;
+}
+
+.boutique-badge {
+    position: static;
+    display: inline-block;
+    width: fit-content;
+    background: #121212;
+    color: #fff;
+    padding: 7px 12px;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    border-radius: 0;
+}
+
+/* =========================================================
+   BOUTIQUE - Padronização das imagens dos produtos
+   Faz todas as imagens preencherem o quadro do card
+   ========================================================= */
+
+.boutique-img-box {
+    width: 100%;
+    height: 270px;
+    background: #f1f1f1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 26px;
+}
+
+.boutique-img-box img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.boutique-card:hover .boutique-img-box img {
+    transform: scale(1.04);
+    opacity: 0.95;
+}
+
+.boutique-card h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0 0 14px;
+    color: #121212;
+    line-height: 1.25;
+}
+
+.boutique-description {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.boutique-price {
+    margin-top: auto;
+    margin-bottom: 18px;
+}
+
+.boutique-price strong {
+    color: #c9933b;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.boutique-card .btn {
+    border-radius: 0;
+    padding: 13px 15px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 1100px) {
+    .boutique-vitrine {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .boutique-container {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .boutique-filtros-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .boutique-vitrine {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .boutique-vitrine {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-img-box {
+        height: 220px;
+    }
+}
+
+@media (max-width: 576px) {
+    .boutique-filtros-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .boutique-header {
+        padding: 60px 20px 45px;
+    }
+
+    .boutique-container {
+        margin-top: 40px;
+    }
+
+    .boutique-card {
+        padding: 22px;
+    }
+}
+
+
+/* =============================================================================
+   ACABAMENTO GLOBAL PREMIUM - AURORA MOTORS
+   Uso: camada geral para páginas claras ficarem no padrão visual do projeto.
+============================================================================= */
+
+/* Fundo geral das páginas claras */
+body {
+    background-color: #f5f5f5;
+}
+
+/* Padronização visual de áreas principais */
+main {
+    background-color: #f5f5f5;
+}
+
+/* GLOBAL - Heros claros convertidos para visual premium */
+.service-hero,
+.form-page-hero,
+.ev-hero,
+.position-relative.text-center.py-5.bg-light {
+    background: #121212 !important;
+    color: #fff !important;
+    border-bottom: none !important;
+    padding: 80px 20px 55px !important;
+}
+
+.service-hero h1,
+.form-page-hero h1,
+.ev-hero h1,
+.position-relative.text-center.py-5.bg-light h1 {
+    color: #fff !important;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.service-hero p,
+.form-page-hero p,
+.ev-hero p,
+.position-relative.text-center.py-5.bg-light p {
+    color: #cfcfcf !important;
+    line-height: 1.7;
+}
+
+.service-hero i,
+.form-page-hero i,
+.ev-hero i,
+.position-relative.text-center.py-5.bg-light i {
+    color: #c9933b !important;
+}
+
+/* Subtítulos dourados */
+.service-hero h6,
+.form-page-hero h6,
+.ev-hero h6,
+.text-uppercase[style*="color: #c9933b"] {
+    color: #c9933b !important;
+    letter-spacing: 2px;
+}
+
+/* GLOBAL - Containers de conteúdo */
+section.container.py-5,
+section.container.py-5.my-4,
+section.container.py-5.my-5 {
+    background-color: transparent;
+}
+
+/* GLOBAL - Cards e caixas principais */
+.service-form-box,
+.premium-form-box,
+.b2b-form-box,
+.offer-card,
+.ev-feature-box,
+.wallbox-feature,
+.ps-text-box,
+.dashboard-card,
+.security-card,
+.order-card,
+.vehicle-card,
+.appointment-card,
+.empty-box,
+.account-sidebar,
+.product-card .bg-light,
+.container .bg-light {
+    background: #fff !important;
+    border: 1px solid #e9e9e9 !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.055) !important;
+}
+
+/* Destaque superior dos blocos principais */
+.service-form-box,
+.premium-form-box,
+.b2b-form-box,
+.offer-card,
+.ev-feature-box,
+.wallbox-feature,
+.dashboard-card,
+.security-card,
+.order-card,
+.vehicle-card,
+.appointment-card,
+.empty-box {
+    border-top: 3px solid #121212 !important;
+}
+
+/* Cards com efeito hover */
+.offer-card,
+.ev-feature-box,
+.wallbox-feature,
+.vehicle-card,
+.order-card,
+.appointment-card,
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover,
+.ev-feature-box:hover,
+.wallbox-feature:hover,
+.vehicle-card:hover,
+.order-card:hover,
+.appointment-card:hover,
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.09) !important;
+}
+
+/* PÁGINAS: CONTA / PERFIL (minha-conta.php, seguranca.php e área do cliente) */
+.account-section {
+    background: #f5f5f5 !important;
+}
+
+.account-hero {
+    background: #121212 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.account-sidebar {
+    border-top: 3px solid #121212 !important;
+}
+
+.account-sidebar a,
+.account-link {
+    letter-spacing: 1.5px;
+}
+
+.account-sidebar a:hover,
+.account-sidebar a.active,
+.account-link:hover,
+.account-link.active {
+    background: #121212 !important;
+    color: #fff !important;
+    border-left-color: #c9933b !important;
+}
+
+.logout-link,
+.account-link.text-danger {
+    color: #dc3545 !important;
+}
+
+.logout-link:hover,
+.account-link.text-danger:hover {
+    background: #dc3545 !important;
+    color: #fff !important;
+}
+
+/* PÁGINA: AGENDAMENTOS (agendamentos.php e agendar-revisao.php) */
+.appointment-card {
+    border-left: 4px solid #121212 !important;
+    border-top: none !important;
+}
+
+.appointment-date .month {
+    color: #c9933b !important;
+}
+
+.appointment-date .day {
+    color: #121212 !important;
+}
+
+.badge-service,
+.appointment-info .badge-service {
+    background: #121212 !important;
+    color: #fff !important;
+    letter-spacing: 1.5px;
+}
+
+/* PÁGINA: MEUS PEDIDOS (meus-pedidos.php) */
+.order-card {
+    border-left: 4px solid #121212 !important;
+    border-top: none !important;
+}
+
+.order-code {
+    color: #c9933b !important;
+}
+
+.status-badge {
+    border-radius: 0 !important;
+    background: #fff !important;
+    letter-spacing: 1.5px;
+}
+
+/* PÁGINA: MEUS VEÍCULOS (meus-veiculos.php) */
+.vehicle-card {
+    border-top: 3px solid #121212 !important;
+}
+
+.vehicle-info {
+    background: #fff;
+}
+
+.vehicle-telemetry {
+    background: #121212 !important;
+    border-top: 3px solid #c9933b;
+}
+
+/* GLOBAL - Formulários */
+.form-control,
+.form-control-service,
+.form-control-profile,
+.form-control-security,
+.form-control-b2b,
+.premium-input,
+select,
+textarea {
+    border-radius: 0 !important;
+    background-color: #fafafa !important;
+    border: 1px solid #ddd !important;
+    color: #333 !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus,
+.form-control-service:focus,
+.form-control-profile:focus,
+.form-control-security:focus,
+.form-control-b2b:focus,
+.premium-input:focus,
+select:focus,
+textarea:focus {
+    border-color: #c9933b !important;
+    background-color: #fff !important;
+    box-shadow: none !important;
+}
+
+/* Labels */
+label,
+.form-label {
+    letter-spacing: 1px;
+}
+
+/* GLOBAL - Botões */
+.btn,
+button {
+    border-radius: 0 !important;
+}
+
+.btn-dark,
+.btn-primary.premium-btn,
+.premium-btn {
+    background-color: #121212 !important;
+    border-color: #121212 !important;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.btn-dark:hover,
+.btn-primary.premium-btn:hover,
+.premium-btn:hover {
+    background-color: #c9933b !important;
+    border-color: #c9933b !important;
+    color: #fff !important;
+}
+
+.btn-outline-dark {
+    border-color: #121212 !important;
+    color: #121212 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-outline-dark:hover {
+    background-color: #121212 !important;
+    color: #fff !important;
+}
+
+.btn-outline-light {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* PÁGINAS: SERVIÇOS / FINANCEIRO / VENDAS */
+.service-page {
+    background: #f5f5f5;
+}
+
+.sales-hero,
+.b2b-hero,
+.charge-hero {
+    border-bottom: 4px solid #c9933b;
+}
+
+.offer-card {
+    border-top-color: #c9933b !important;
+}
+
+.wallbox-feature,
+.ev-feature-box {
+    height: 100%;
+}
+
+/* Ícones das páginas claras */
+.icon-gold,
+.ev-feature-box i,
+.wallbox-feature i,
+.product-card i {
+    color: #c9933b !important;
+}
+
+/* PÁGINA: LIFESTYLE & ACESSÓRIOS (lifestyle-acessorios.php) */
+.lifestyle-hero {
+    border-bottom: 4px solid #c9933b;
+}
+
+.product-card {
+    background: #fff !important;
+    padding: 28px !important;
+    border: 1px solid #e9e9e9 !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.055) !important;
+}
+
+.product-card .bg-light {
+    background: linear-gradient(135deg, #f3f3f3, #e9e9e9) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.product-title {
+    color: #121212 !important;
+}
+
+/* Seções escuras */
+.dark-section {
+    border-top: 4px solid #c9933b;
+}
+
+/* PÁGINA: PREMIUM SELECTION (premium-selection.php) */
+.ps-text-box {
+    border-top: 3px solid #c9933b !important;
+}
+
+/* PÁGINA: CARRINHO (carrinho.php) */
+.cart-page {
+    background: #f5f5f5;
+}
+
+.cart-summary,
+.cart-item {
+    background: #fff !important;
+    border: 1px solid #e9e9e9 !important;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.055) !important;
+}
+
+.cart-summary {
+    border-top: 3px solid #121212 !important;
+}
+
+/* PÁGINAS: LEGAIS / TEXTOS INSTITUCIONAIS */
+.legal-content {
+    background: #fff;
+    padding: 50px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border-top: 3px solid #121212;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.055);
+}
+
+/* =============================================================================
+   RESPONSIVIDADE GLOBAL
+============================================================================= */
+@media (max-width: 900px) {
+    .service-form-box,
+    .premium-form-box,
+    .b2b-form-box,
+    .dashboard-card,
+    .security-card,
+    .order-card,
+    .vehicle-info,
+    .empty-box,
+    .legal-content {
+        padding: 30px !important;
+    }
+
+    .account-sidebar {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-hero,
+    .form-page-hero,
+    .ev-hero,
+    .position-relative.text-center.py-5.bg-light {
+        padding: 60px 20px 45px !important;
+    }
+
+    .service-form-box,
+    .premium-form-box,
+    .b2b-form-box,
+    .dashboard-card,
+    .security-card,
+    .order-card,
+    .vehicle-info,
+    .empty-box,
+    .legal-content {
+        padding: 24px !important;
+    }
+
+    .product-card {
+        padding: 22px !important;
+    }
 }

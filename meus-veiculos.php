@@ -1,17 +1,84 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) { header("Location: index.php"); exit; }
-include 'includes/header.php'; 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once 'conexao.php';
+
+if (!isset($_SESSION['logado']) || $_SESSION['logado'] !== true) {
+    header("Location: index.php");
+    exit;
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+
+$stmt = $pdo->prepare("SELECT * FROM veiculos WHERE usuario_id = :usuario_id ORDER BY id DESC");
+$stmt->bindParam(':usuario_id', $usuario_id);
+$stmt->execute();
+$veiculos = $stmt->fetchAll();
+
+include 'includes/header.php';
 ?>
 
 <style>
     body { background-color: #f8f9fa; }
-    .account-hero { background-color: #121212; color: #fff; padding: 60px 0 40px; }
-    .account-sidebar { background: #fff; border: 1px solid #eaeaea; padding: 30px 0; }
-    .account-link { display: block; padding: 12px 30px; color: #555; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: 0.3s; border-left: 3px solid transparent; }
-    .account-link:hover, .account-link.active { color: #c9933b; background-color: #fafafa; border-left-color: #c9933b; font-weight: 500; }
-    .vehicle-card { background: #fff; border: 1px solid #eaeaea; transition: 0.3s; }
-    .vehicle-telemetry { background-color: #121212; color: #fff; padding: 20px; font-family: monospace; font-size: 13px; }
+
+    .account-hero {
+        background-color: #121212;
+        color: #fff;
+        padding: 60px 0 40px;
+    }
+
+    .account-sidebar {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        padding: 30px 0;
+    }
+
+    .account-link {
+        display: block;
+        padding: 12px 30px;
+        color: #555;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: 0.3s;
+        border-left: 3px solid transparent;
+    }
+
+    .account-link:hover, .account-link.active {
+        color: #c9933b;
+        background-color: #fafafa;
+        border-left-color: #c9933b;
+        font-weight: 500;
+    }
+
+    .vehicle-card {
+        background: #fff;
+        border: 1px solid #eaeaea;
+        transition: 0.3s;
+        overflow: hidden;
+    }
+
+    .vehicle-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        background: #111;
+    }
+
+    .vehicle-info {
+        padding: 35px;
+    }
+
+    .vehicle-telemetry {
+        background-color: #121212;
+        color: #fff;
+        padding: 20px;
+        font-family: monospace;
+        font-size: 13px;
+    }
 </style>
 
 <main>
@@ -38,51 +105,81 @@ include 'includes/header.php';
                     <a href="meus-veiculos.php" class="account-link active"><i class="bi bi-car-front me-3 fs-5"></i> Meus Veículos</a>
                     <a href="agendamentos.php" class="account-link"><i class="bi bi-calendar-check me-3 fs-5"></i> Agendamentos</a>
                     <a href="seguranca.php" class="account-link"><i class="bi bi-shield-lock me-3 fs-5"></i> Segurança</a>
-                    <hr class="mx-4 my-3 text-muted">
                     <a href="logout.php" class="account-link text-danger"><i class="bi bi-box-arrow-right me-3 fs-5"></i> Sair da Conta</a>
                 </div>
             </div>
 
             <div class="col-lg-9">
-                <div class="vehicle-card shadow-sm mb-4">
-                    <div class="row g-0">
-                        <div class="col-md-5" style="background: url('assets/img/Vanguard M-Line.png') center/cover; min-height: 250px;"></div>
-                        <div class="col-md-7 p-4 p-lg-5">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
+                <h4 class="fw-light mb-4">Veículos Vinculados</h4>
+
+                <?php if (empty($veiculos)): ?>
+                    <div class="vehicle-card shadow-sm p-5 text-center">
+                        <i class="bi bi-car-front" style="font-size: 48px; color: #c9933b;"></i>
+                        <h4 class="fw-light mt-3">Nenhum veículo encontrado</h4>
+                        <p class="text-muted mb-0">Você ainda não possui veículos vinculados à sua conta.</p>
+                    </div>
+                <?php endif; ?>
+
+                <?php foreach ($veiculos as $veiculo): ?>
+                    <div class="vehicle-card shadow-sm mb-4">
+                        <img src="<?php echo htmlspecialchars($veiculo['imagem']); ?>" alt="<?php echo htmlspecialchars($veiculo['modelo']); ?>">
+
+                        <div class="vehicle-info">
+                            <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
                                 <div>
-                                    <h4 class="fw-light mb-1">Aurora Vanguard M-Line</h4>
-                                    <p class="text-muted small mb-0">Híbrido Plug-in • Ano 2026/2026</p>
+                                    <span class="badge bg-dark rounded-0 mb-2 text-uppercase">
+                                        <?php echo htmlspecialchars($veiculo['status']); ?>
+                                    </span>
+
+                                    <h3 class="fw-light mb-2">
+                                        <?php echo htmlspecialchars($veiculo['modelo']); ?>
+                                    </h3>
+
+                                    <p class="text-muted mb-0">
+                                        <?php echo htmlspecialchars($veiculo['versao']); ?>
+                                    </p>
                                 </div>
-                                <span class="badge bg-success border-0 text-uppercase" style="letter-spacing: 1px;"><i class="bi bi-wifi me-1"></i> Online</span>
+
+                                <div class="text-end">
+                                    <p class="small text-muted text-uppercase mb-1">Placa</p>
+                                    <h5 class="mb-0"><?php echo htmlspecialchars($veiculo['placa']); ?></h5>
+                                </div>
                             </div>
-                            
-                            <hr class="text-muted my-4">
-                            
-                            <div class="row mb-4">
-                                <div class="col-6">
-                                    <p class="small text-uppercase text-muted mb-1 fw-bold">Placa</p>
-                                    <p class="mb-0">AUR-2026</p>
+
+                            <hr class="my-4">
+
+                            <div class="row g-4">
+                                <div class="col-md-3">
+                                    <p class="small text-muted text-uppercase mb-1">Motorização</p>
+                                    <strong><?php echo htmlspecialchars($veiculo['motorizacao']); ?></strong>
                                 </div>
-                                <div class="col-6">
-                                    <p class="small text-uppercase text-muted mb-1 fw-bold">Chassi (VIN)</p>
-                                    <p class="mb-0">9BW ZZZ 3B Z P T 000001</p>
+
+                                <div class="col-md-3">
+                                    <p class="small text-muted text-uppercase mb-1">Cor</p>
+                                    <strong><?php echo htmlspecialchars($veiculo['cor']); ?></strong>
                                 </div>
-                            </div>
-                            
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-dark rounded-0 px-4 text-uppercase" style="font-size: 12px; letter-spacing: 1px;"><i class="bi bi-journal-text me-2"></i> Manual Digital</button>
-                                <button class="btn btn-outline-dark rounded-0 px-4 text-uppercase" style="font-size: 12px; letter-spacing: 1px;">Connected Store</button>
+
+                                <div class="col-md-3">
+                                    <p class="small text-muted text-uppercase mb-1">Ano</p>
+                                    <strong><?php echo htmlspecialchars($veiculo['ano']); ?></strong>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <p class="small text-muted text-uppercase mb-1">Cadastro</p>
+                                    <strong><?php echo date('d/m/Y', strtotime($veiculo['criado_em'])); ?></strong>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="vehicle-telemetry">
+                            STATUS: SISTEMA CONECTADO • GARANTIA: ATIVA • ÚLTIMA SINCRONIZAÇÃO: <?php echo date('d/m/Y H:i'); ?>
+                        </div>
                     </div>
-                    <div class="vehicle-telemetry d-flex justify-content-around text-center">
-                        <div><i class="bi bi-speedometer2 text-white-50 mb-2 fs-4 d-block"></i> Odômetro: <strong>1.450 km</strong></div>
-                        <div><i class="bi bi-battery-charging text-white-50 mb-2 fs-4 d-block"></i> Bateria: <strong class="text-success">85%</strong></div>
-                        <div><i class="bi bi-geo-alt text-white-50 mb-2 fs-4 d-block"></i> Localização: <strong>Protegida</strong></div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
+
             </div>
         </div>
     </section>
 </main>
+
 <?php include 'includes/footer.php'; ?>

@@ -2,19 +2,19 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db   = '';//colocar o nome do nosso banco aqui
+$db   = 'aurora_motors';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
-    
-    // Configura para avisar se houver erros de SQL
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$db;charset=utf8mb4",
+        $user,
+        $pass
+    );
 
-    // Se chegar aqui, funcionou! 
-    echo "Conexão firme e forte!"; 
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    // Se falhar, mostra o erro na tela
-    echo "Falha na conexão: " . $e->getMessage();
+    die("Falha na conexão com o banco de dados: " . $e->getMessage());
 }
 ?>
